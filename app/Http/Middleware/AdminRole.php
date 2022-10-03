@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class AdminRole
@@ -16,10 +17,11 @@ class AdminRole
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next)
-    {
-        if(!Auth::user()->role == User::$ROLE_USER){
-            return redirect('login');
+    {  
+        if(Auth::user()->role != User::ROLE_ADMIN){
+             return redirect('login');
         }
         return $next($request);
     }
-}   
+
+}

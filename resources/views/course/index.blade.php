@@ -13,6 +13,7 @@
                     <th>Описание</th>
                     <th>Фотография</th>
                     <th>Видео</th>
+                    <th>Цена</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -27,6 +28,7 @@
                             <a href="/course/{{ $item->id }}/edit" class="btn btn-primary">Редактировать</a>
                             <a href="/course/{{ $item->id }}/destroy" class="btn btn-danger">Удалить</a>
                         </td>
+                        <td>{{$item->price}}</td>
                     </tr>
                 @endforeach
                 </tbody>

@@ -13,8 +13,8 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
 
-   public $ROLE_USER = 0;
-   public $ROLE_ADMIN = 1;
+   public const ROLE_USER = 0;
+   public const ROLE_ADMIN = 1;
 
 
     /**
@@ -42,6 +42,7 @@ class User extends Authenticatable
 
     /**
      * The attributes that should be cast.
+     * dwdewdwd
      *
      * @var array<string, string>
      */
