@@ -41,7 +41,8 @@ class CourseController extends Controller
             "title" => "string|required",
             "descr" => "string|required",
             "video" => "string|required",
-            "file" => "file|required"
+            "file" => "file|required",
+            "price"=>"price|required"
         ]);
 
         $path = '';
@@ -59,6 +60,7 @@ class CourseController extends Controller
         $course->descr = $request->descr;
         $course->image = $path;
         $course->video = $request->video;
+        $course->price=$request->price;
         $course->save();
 
         return redirect()->route('course.index');
@@ -101,7 +103,8 @@ class CourseController extends Controller
             "title" => "string|required",
             "descr" => "string|required",
             "video" => "string|required",
-            "file" => "file"
+            "file" => "file",
+            "price"=>"price|required"
         ]);
 
         $path = $course->image;
@@ -118,7 +121,8 @@ class CourseController extends Controller
             "title" => $request->title,
             "descr" => $request->descr,
             "video" => $request->video,
-            "image" => $path
+            "image" => $path,
+            "price" =>$request->price
         ]);
 
         return redirect()->route('course.index');
