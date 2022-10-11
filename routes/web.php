@@ -19,8 +19,11 @@ Route::get('/', function () {
     return redirect('login');
 });
 Auth::routes();
-Route::middleware(['auth','role'])->group(function(){
-//   Route::get('/some', function(){return 'wafwfewef';});
+Route::middleware(['auth'])->group(function(){
+    Route::get('/some', function(){return 'wafwfewef';});
+    Route::middleware(['role'])->group(function(){
+        Route::get('/some/2', function(){return 'wafwfewef';});
+    });
 //   Route::middleware(['middleware'=>'role'])->group(function(){ 
     Route::resource('course', App\Http\Controllers\CourseController::class);
     Route::get('/course/{course}/destroy', [App\Http\Controllers\CourseController::class, 'destroy']);
