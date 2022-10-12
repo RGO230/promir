@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 Auth::routes();
 Route::middleware(['auth'])->group(function(){
-    Route::get('/some', function(){return 'wafwfewef';});
+    Route::get('lk/course/', 'App\Http\Controllers\CourseController@frontindex');
     Route::middleware(['role'])->group(function(){
         Route::get('/some/2', function(){return 'wafwfewef';});
     });
