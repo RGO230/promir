@@ -19,3 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+Route::post('/message', 'App\Http\Controllers\ChatController@index');
+Route::get('/courses','App\Http\Controllers\ApiCourseController@index');
+
+
+

@@ -148,6 +148,6 @@ class CourseController extends Controller
         $courses = Course::whereHas('users',function($q) use ($user_id) {
             $q->where('user_id',$user_id);
         })->get();
-        return view('lk.index') -> with (new CourseResource ($courses));
+        return view('lk.index') -> with ('course',$courses);
     }
 }
