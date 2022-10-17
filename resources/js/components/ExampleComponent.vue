@@ -1,42 +1,23 @@
-<!DOCTYPE html>
-<head>
-  <title>Pusher Test</title>
-</head>
-<body>
-  <h1>Pusher Test</h1>
-  <p>
-    Publish an event to channel <code>my-channel</code>
-    with event name <code>my-event</code>; it will appear below:
-  </p>
-  <div id="app">
-    <ul>
-      <li v-for="message in messages">
-        {{message}}
-      </li>
-    </ul>
-  </div>
+<template>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Example Component</div>
 
-  <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script>
-    // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
+                    <div class="card-body">
+                        I'm an example component.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
 
-    var pusher = new Pusher('4db31c7b4cddbe1cc61f', {
-      cluster: 'eu'
-    });
-
-    var channel = pusher.subscribe('my-channel');
-    channel.bind('my-event', function(data) {
-      app.messages.push(JSON.stringify(data));
-    });
-
-    // Vue application
-    const app = new Vue({
-      el: '#app',
-      data: {
-        messages: [],
-      },
-    });
-  </script>
-</body>
+<script>
+    export default {
+        mounted() {
+            console.log('Component mounted.')
+        }
+    }
+</script>
