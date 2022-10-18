@@ -1,21 +1,6 @@
-
-import './style/style.css';
-import './style/media.css';
-
-
-export function App() {
-  return (
-    <div className="App">
-
-    </div>
-  );
-}
-
-
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
+import App from './App';
 import {RouterProvider} from "react-router";
 import router from './router/index';
 
@@ -25,6 +10,5 @@ root.render(
         <RouterProvider router={router} />
     </React.StrictMode>
 );
-
 
 

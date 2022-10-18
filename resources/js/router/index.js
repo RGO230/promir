@@ -12,9 +12,6 @@ const router = createBrowserRouter([
         path: "/stream",
         element: <StreamPage/>,
     },
-    {
-        path: "*",
-        element: <MainPage/>,
-    },
+    
 ]);
 export default router;

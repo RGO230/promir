@@ -14,7 +14,7 @@ const MyHeader = () => {
 
             <div className='header-navbar'>
                 <Link to='/'>Личный кабинет</Link>
-                <Link to='/'>О проекте</Link>
+                <Link to='/stream'>О проекте</Link>
                 <Link to='/'>Контакты</Link>
             </div>
 
