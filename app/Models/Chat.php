@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Chat extends Model
 {
     use HasFactory;
-    
+    protected $fillable =['message'];
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
-    public function streams()
+    public function stream()
     {
         return $this->belongsTo(Stream::class);
     }

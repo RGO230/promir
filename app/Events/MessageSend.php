@@ -14,10 +14,14 @@ class MessageSend implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
     public $message;
+    public $stream_id;
+    public $user_id;
 
-    public function __construct($message)
+    public function __construct($message,$stream_id,$user_id)
     {
         $this->message = $message;
+        $this->stream_id = $stream_id;
+        $this->user_id = $user_id;
     }
 
     /**
@@ -27,7 +31,10 @@ class MessageSend implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('chatbox');
+        return[
+            new PrivateChannel('chat-'.$this->stream_id),
+            new PrivateChannel('chat-'.$this->user_id)
+        ];
     }
     public function broadcastAs()
   {

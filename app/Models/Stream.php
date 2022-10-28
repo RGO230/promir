@@ -17,5 +17,8 @@ class Stream extends Model
             'stream_id','id','id','user_id'
         );  
     }
+    public function messages(){
+        return $this->hasMany(Chat::class);
+    }
     
 }

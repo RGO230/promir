@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Resources\CourseResource;
+
 
 class CourseController extends Controller
 {
@@ -145,9 +145,9 @@ class CourseController extends Controller
 
     public function frontindex(){
         $user_id = Auth::user()->id;
-        $courses = Course::whereHas('users',function($q) use ($user_id) {
+        $course = Course::whereHas('users',function($q) use ($user_id) {
             $q->where('user_id',$user_id);
         })->get();
-        return view('lk.index') -> with ('course',$courses);
+        return view('lk.index') -> with('course',$course);
     }
 }
