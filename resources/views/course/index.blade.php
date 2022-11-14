@@ -1,68 +1,118 @@
 @extends('layouts.app')
+
+    <title>Курсы</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="utf-8">
+    <link href="http://fonts.cdnfonts.com/css/svn-gilroy" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <link rel="shortcut icon" href="images/фавикон 20.png" type="image/png">
+
+    <!-- Анимации -->
+
+    <link rel="stylesheet" href="css/fm.revealator.jquery.css">
+    <script src="js/fm.revealator.jquery.js"></script>
+
+    <script type="text/javascript">
+        Revealator.scroll_padding = '100';
+    </script>
+    <script type="text/javascript">
+        Revealator.effects_padding = '-400';
+    </script>
+
 @section('content')
-    <div class="panel panel-default">
-        <div style="display: flex; justify-content: space-between" class="panel-heading">
-            <h2>Курсы</h2>  
-            <a href="/course/create" class="btn btn-primary"> + Добавить новый</a>
+    <div class="wrap">
+        <!-- <img style="top: 0; right:0" class="ellipse" src="images/Ellipse 1.png" width="700"> -->
+        <div class="header">
+            <div class="menu">
+                <a href="/">Главная</a>
+                <a href="service.html">Услуги</a>
+                <a style="border-bottom: 1px solid black" href="cource.html">Курсы</a>
+                <a href="contact.html">Контакты</a>
+            </div>
         </div>
-        <div class="panel-body">
-            <table class="table">
-                <thead class="thead-dark">
-                <tr>
-                    <th>Название</th>
-                    <th>Описание</th>
-                    <th>Фотография</th>
-                    <th>Видео</th>
-                    <th>Цена</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($course as $item)
-                    <tr>
-                        <td>{{ $item->title }}</td>
-                        <td>{{ $item->descr }}</td>
-                        <td><img width="100" src="{{$item->image}}"></td>
-                        <td>{{$item->video}}</td>
-                        <td style="text-align:right;">
-                            <a href="/course/{{ $item->id }}/edit" class="btn btn-primary">Редактировать</a>
-                            <a href="/course/{{ $item->id }}/destroy" class="btn btn-danger">Удалить</a>
-                        </td>
-                        <td>{{$item->price}}</td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
+        <div class="about revealator-fade revealator-once revealator-duration15">
+
+            <img src="images/DSC03358 1.png">
+            @foreach($course as $item)
+            <div class="about-text ">
+                <h2>{{$item->title}}</h2>
+                <p>{{$item->descr}}
+                </p>
+                <p>Стоимость пакета</p>
+                <p style="margin-bottom: 50px;" class="price">{{item->price}}</p>
+                <a href="" class="custom-button form-open">Выбрать</a>
+            </div>
+            @endforeach
+       
+        <div class="social">
+            <a><img src="images/Group тг.png"></a>
+            <a><img src="images/Group почта.png"></a>
+            <a><img src="images/Group ю туб.png"></a>
         </div>
     </div>
-@endsection
+        <div class="form">
+    </div>
+    <div class="modal">
+        <p>Заявка</p>
+        <form class="modal-form">
+            <p>Ваше имя
+                <input type="text" placeholder="Введите имя">
+            </p>
 
-<style>
-    table {
-        width: 90%;
-        margin-top: 20px;
-    }
-    table, th, td {
-      border: 1px solid grey !important;
-    }
-    thead {
-      position: sticky;
-      top: 0;
-      background: #2B2F33;
-      color: white;
-      border-color:white;
-    }
-    .wrap {
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-    main {
-        width: 100%;
-        display:flex;
-        flex-direction: column;
-        align-items:center;
-    }
-    .panel {
-        width: 95%;
-    }
-  </style>
+            <p>Email
+                <input type="text" placeholder="Введите email">
+            </p>
+
+            <p>Номер телефона
+                <input type="text" placeholder="+7 (123) 456-78-91">
+            </p>
+
+            <button class="custom-button" type="submit">Перейти к оплате</button>
+        </form>
+    </div>
+    @endsection
+    <script>
+        $(document).ready(function () {
+            $('body .form-open').on('click', function (event) {
+                event.preventDefault();
+                $('.form').fadeIn(200);
+                $('.modal').fadeIn(200);
+                $('.modal').css({
+                    'display':'flex'
+                });
+            });
+            $('.form').on('click', function () {
+                $('.form').fadeOut(200);
+                $('.modal').fadeOut(200);
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.review-slider').slick({
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                arrows: true,
+                dots: true
+                // centerMode: true,
+            });
+        });
+        $(document).ready(function () {
+            $('.slider').slick({
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                arrows: true,
+                dots: true
+                // centerMode: true,
+            });
+        });
+    </script>
+
+
+
