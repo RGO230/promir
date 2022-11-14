@@ -37,9 +37,9 @@
             </div>
         </div>
         <div class="about revealator-fade revealator-once revealator-duration15">
-
-            <img src="images/DSC03358 1.png">
-            @foreach($course as $item)
+        @foreach($course as $item)
+            <img src="{{$item->image}}">
+           
             <div class="about-text ">
                 <h2>{{$item->title}}</h2>
                 <p>{{$item->descr}}
