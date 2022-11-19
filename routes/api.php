@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['middleware'=>'auth:sanctum'],function(){
+
+Route::post('/message', 'App\Http\Controllers\ChatController@index');
+Route::get('/courses','App\Http\Controllers\ApiCourseController@index');
+});
+Route::get('/some/2', function(){return 'wafwfewef';});
+

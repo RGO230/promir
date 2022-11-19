@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Stream;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+
 
 class StreamController extends Controller
 {
@@ -36,7 +39,8 @@ class StreamController extends Controller
             "title" => "string|required",
             "descr" => "string|required",
             "youtube_flow" => "string|required",
-            "file" => "file|required"
+            "file" => "file|required",
+            "streamtoken"=>"streamtoken",
         ]);
 
         $path = '';
@@ -54,6 +58,7 @@ class StreamController extends Controller
         $stream->descr = $request->descr;
         $stream->preview_image = $path;
         $stream->youtube_flow = $request->youtube_flow;
+        $stream->streamtoken =$request->youtube_flow.Str::random(10);
         $stream->save();
 
         return redirect()->route('stream.index');
@@ -96,7 +101,7 @@ class StreamController extends Controller
             "title" => "string|required",
             "descr" => "string|required",
             "youtube_flow" => "string|required",
-            "file" => "file|required"
+            "file" => "file|required",
         ]);
 
         $path = $stream->preview_image;
@@ -128,6 +133,19 @@ class StreamController extends Controller
         $stream->delete();
         return redirect()->back();
     }
+
+
+    // public function streamauth (Request $request)
+    // {
+    //  $token = $request->streamtoken;
+    //  Mail::send(Stream::whereHas('users', function($q)use($user_id){
+    //     $q->where('email',$email);
+    //     $message->from('guskovrus-71@mail.ru');
+    //     $message->to($request->email);
+    //     $message->subject($token);
+
+    //  })
+    // }
 
 }
 

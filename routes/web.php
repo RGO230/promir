@@ -15,12 +15,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return redirect('login');
-});
 Auth::routes();
 Route::middleware(['auth'])->group(function(){
-    Route::get('/some', function(){return 'wafwfewef';});
+    Route::get('lk/course/', 'App\Http\Controllers\CourseController@frontindex');
     Route::middleware(['role'])->group(function(){
         Route::get('/some/2', function(){return 'wafwfewef';});
     });
@@ -33,3 +30,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/stream/{stream}/update', [App\Http\Controllers\StreamController::class, 'update']);
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'],function(){})->name('home');
 });
+
+Route::get('/{any}', function () {
+    return view('welcome');
+    })->where('any', '.*');

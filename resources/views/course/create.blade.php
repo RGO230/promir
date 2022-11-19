@@ -37,7 +37,7 @@
                         <label  class="col-md-4 col-form-label text-md-end">{{ __('Цена') }}</label>
 
                         <div class="col-md-6">
-                            <input type="text" class="form-control"value='₽' name="price" required autofocus>
+                            <input type="text" class="form-control" name="price" required autofocus>
                         </div>
                     </div>
 

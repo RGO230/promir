@@ -1,0 +1,77 @@
+@media (max-width: 1545px) {
+    .first-banner{
+        padding: 35px 15px;
+    }
+
+    footer{
+        padding: 35px 15px;
+    }
+    
+}
+
+@media (max-width: 1084px) {
+
+    .third-banner__about
+    {
+        flex-direction: column;
+        align-items: center
+    }
+
+    .third-banner__ref
+    {
+        flex-direction: column-reverse;
+        align-items: center
+    }
+
+    .third-banner__ref__text,
+    .third-banner__about__text{
+        width: calc(100% - 30px);
+        padding: 15px;
+    }
+
+    .third-banner__about__image,
+    .third-banner__ref__image
+    {
+        width: 100%;
+        height: 500px;
+
+    }
+
+}
+
+@media (max-width: 1070px) {
+
+    .second-banner{
+        top: 0;
+    }
+
+    .first-banner{
+        flex-direction: column;
+        align-items: center;
+        padding: 0px;
+    }
+    .first-banner-header{
+
+        height: calc(100vh - 110px);
+        width: 100%;
+        max-width: calc(100% - 40px);
+        background: rgba(37, 164, 255, 0.8);
+        padding: 20px;
+        position: absolute;
+        top: 0;
+
+    }
+}
+
+@media (max-width: 848px) {
+    footer{
+        flex-direction: column;
+        align-items: center;
+    }
+    .myfooter__socials__icons,
+    .first-banner-header-navbar
+    {
+        flex-wrap: wrap;
+    }
+    
+}
