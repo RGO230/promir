@@ -26,11 +26,9 @@ const MyFooter = () => {
 
             </div>
             <div className='myfooter__contacts'>
-
-                <h3>+7 (987) 654-32-10</h3>
-                <h3>+7 (987) 654-32-10</h3>
-                <h3>E-mail: promir@mail.com</h3>
-
+                <a href='tel:79876543210'>+7 (987) 654-32-10</a>
+                <a href='tel:79876543210'>+7 (987) 654-32-10</a>
+                <a href='mailto:promir@mail.com'>E-mail: promir@mail.com</a>
             </div>
 
         </footer>

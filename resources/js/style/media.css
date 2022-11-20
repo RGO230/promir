@@ -1,77 +1,114 @@
-@media (max-width: 1545px) {
-    .first-banner{
-        padding: 35px 15px;
+@media (max-width: 1455px) {
+    .first-banner__title{
+        font-size: 185px;
     }
-
-    footer{
-        padding: 35px 15px;
-    }
-    
 }
 
-@media (max-width: 1084px) {
 
-    .third-banner__about
-    {
-        flex-direction: column;
-        align-items: center
+@media (max-width: 1243px) {
+
+    .second-banner__grass-earth__bottle {
+        bottom: calc(var(--second-banner) + 27px);
+        left: 40%;
+        height: 80%;
     }
 
-    .third-banner__ref
-    {
-        flex-direction: column-reverse;
-        align-items: center
+    .second-banner__grass-earth__grass {
+        left: 25%;
+        width: 50%;
     }
-
-    .third-banner__ref__text,
-    .third-banner__about__text{
-        width: calc(100% - 30px);
-        padding: 15px;
-    }
-
-    .third-banner__about__image,
-    .third-banner__ref__image
-    {
-        width: 100%;
-        height: 500px;
-
-    }
-
 }
 
-@media (max-width: 1070px) {
-
-    .second-banner{
-        top: 0;
+@media (max-width: 990px) {
+    .first-banner__title{
+        font-size: 100px;
     }
+}
 
-    .first-banner{
-        flex-direction: column;
-        align-items: center;
-        padding: 0px;
+@media (max-width: 860px) {
+    .burger{
+        display: block;
     }
-    .first-banner-header{
+    .first-banner__title{
+        font-size: 100px;
+    }
+    .first-banner__blur{
+        display: none;
+    }
+    .first-banner__mob-button {
 
-        height: calc(100vh - 110px);
-        width: 100%;
-        max-width: calc(100% - 40px);
-        background: rgba(37, 164, 255, 0.8);
-        padding: 20px;
         position: absolute;
-        top: 0;
+        margin-top: 25%;
+        width: 100%;
+        z-index: 5;
+        display: flex;
+        justify-content: center;
+
+    }
+    .first-banner__mob-button button{
+        max-width: 500px;
+        padding: 10px;
+        background: rgba(0,0,0,0);
+        border: 2px dashed #1558a4;
+        font-size: 20px;
+        color: #1558a4;
+    }
+
+        .second-banner__grass-earth__bottle {
+            bottom: calc(var(--second-banner) + 20px);
+            left: 38%;
+            height: 72%;
+        }
+
+        .header-navbar{
+            flex-direction: column;
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 320px;
+            bottom: 0;
+            background: #0d4f9f;
+            align-items: center;
+            justify-content: center;
+            transform: translateX(100%);
+            transition: 1s;
+        }
+        .header-navbar.active{
+
+
+            transform: translateX(0);
+        }
+
+    .header-navbar a{
+        color: white;
 
     }
 }
 
-@media (max-width: 848px) {
-    footer{
-        flex-direction: column;
-        align-items: center;
+@media (max-width: 805px){
+    .second-banner__grass-earth__bottle {
+        bottom: calc(var(--second-banner) + 18px);
+        left: 35%;
+        height: 72%;
     }
-    .myfooter__socials__icons,
-    .first-banner-header-navbar
-    {
-        flex-wrap: wrap;
+    .second-banner__grass-earth__grass {
+        left: 10%;
+        width: 80%;
     }
-    
 }
+
+
+
+@media (max-width: 479px){
+    .second-banner__grass-earth__bottle {
+        bottom: calc(var(--second-banner) + -10px);
+        left: 35%;
+        height: 72%;
+    }
+    .second-banner__grass-earth__grass {
+        left: 4%;
+        width: 90%;
+        bottom: calc(var(--second-banner) + -9px);
+    }
+}
+

@@ -24,7 +24,7 @@ services:
       MYSQL_DATABASE: promir
       MYSQL_ROOT_PASSWORD: toor
       MYSQL_PASSWORD: toor
-      MYSQL_USER: root
+      MYSQL_USER: biba
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:

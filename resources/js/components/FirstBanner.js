@@ -1,32 +1,55 @@
-import React from 'react';
-import logoImg from "../assets/images/logo/logo.png";
-import logoText from "../assets/images/logo/logotext.png";
-import {Link} from "react-router-dom";
+import React, {useEffect} from 'react';
+import firstBannerBack from "../assets/images/banners/firstbanner.png";
 
 const FirstBanner = () => {
+
+    const firstBannerRef=React.useRef();
+
+    const initBlock=()=> {
+
+        // const observer = new IntersectionObserver(secondBannerRef.current)
+        const observer = new IntersectionObserver((entry, observer) => {
+            if (!entry[0].isIntersecting) {
+                firstBannerRef.current.classList.add('upBack')
+            }
+        }, {threshold: 1})
+        observer.observe(firstBannerRef.current)
+
+        const observer2 = new IntersectionObserver((entry, observer)=>{
+            if(entry[0].isIntersecting){
+                firstBannerRef.current.classList.remove('upBack')
+            }
+        },{threshold:0})
+        observer2.observe(firstBannerRef.current)
+    }
+
+    useEffect(()=>{
+
+        initBlock();
+
+
+    },[firstBannerRef])
+
+
+
     return (
-        <div className='first-banner'>
-            <div className='logo'>
-                <img className='logo__icon' src={logoImg} alt="logo"/>
-                <img className='logo__text' src={logoText} alt="logotext"/>
-            </div>
+        <div className="banner first-banner" ref={firstBannerRef}>
 
-            <div className='first-banner-header'>
-                <div className='first-banner-header-navbar'>
-                    <Link to='/'>Личный кабинет</Link>
-                    <Link to='/stream'>О проекте</Link>
-                    <Link to='/'>Контакты</Link>
-                </div>
+           <div className='first-banner__background__block'/>
 
-                <div>
-                <h3>Вода - как источник твоего внутреннего состояния, спокойствия и гармонии.</h3>
 
+            <h1 className="first-banner__title">PROMIR</h1>
+            <div  className="first-banner__blur" >
+
+                <h2>Вода - как источник твоего внутреннего состояния, спокойствия и гармонии.</h2>
                 <button>Начать диагностику твоего состояния</button>
-                </div>
-
-
-
             </div>
+            <img className="first-banner__background" src={firstBannerBack}/>
+
+            <div className="first-banner__mob-button"><button>Начать диагностику своего состояния</button></div>
+
+
+
 
         </div>
     );
