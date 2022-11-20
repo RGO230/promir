@@ -23,6 +23,11 @@
     .first-banner__title{
         font-size: 100px;
     }
+    .second-banner__grass-earth__bottle {
+        bottom: calc(var(--second-banner) + 13px);
+        left: 36%;
+        height: 72%;
+    }
 }
 
 @media (max-width: 860px) {
@@ -54,11 +59,7 @@
         color: #1558a4;
     }
 
-        .second-banner__grass-earth__bottle {
-            bottom: calc(var(--second-banner) + 20px);
-            left: 38%;
-            height: 72%;
-        }
+    
 
         .header-navbar{
             flex-direction: column;
@@ -83,6 +84,17 @@
         color: white;
 
     }
+
+    footer{
+        display: none;
+    }
+
+    .banner{
+        height: 100vh;
+    }
+    .five-banner{
+        background-position: center;
+    }
 }
 
 @media (max-width: 805px){
@@ -95,6 +107,43 @@
         left: 10%;
         width: 80%;
     }
+}
+
+@media (max-width: 680px){
+    .first-banner__title{
+        margin-top: 100px;
+    }
+    .first-banner__mob-button{
+        margin-top: 200px;
+    }
+    .first-banner__mob-button button{
+        margin: 0 10px;
+        font-size: 15px;
+    }
+    .myfooter__contacts{
+        flex-direction: column;
+        position: absolute;
+        bottom: 15px;
+        align-items: center;
+    }
+
+    .myfooter__contacts a{
+        font-size: 13px;
+    }
+    .third-banner h1{
+        text-align: center;
+    }
+    .header-navbar .myfooter__contacts{
+        display: flex;
+    }
+}
+
+@media (max-width: 545px){
+    .first-banner__title{
+        font-size: 62px;
+    }
+
+
 }
 
 
@@ -110,5 +159,17 @@
         width: 90%;
         bottom: calc(var(--second-banner) + -9px);
     }
+    .fourth-banner__text{
+        padding: 0 15px;
+    }
+
+}
+
+@media (max-width: 420px){
+
+.second-banner__grass-earth__bottle {
+    left: 30%;
+    bottom: calc(var(--second-banner) + -40px);
+}
 }
 

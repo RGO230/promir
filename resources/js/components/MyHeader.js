@@ -10,7 +10,7 @@ const MyHeader = () => {
 
     const dispatch=useDispatch();
     const isOpenModal=useSelector(state=>state.isOpenModal)
-    const [burger, setBurger] = useState(true);
+    const [burger, setBurger] = useState(false);
 
     const openModal=()=>{
         dispatch({type:'OPEN_MODAL'})
@@ -30,14 +30,25 @@ const MyHeader = () => {
 
 
                 <div className={`header-navbar ${burger? 'active':''}`}>
-                    <Link to='/stream'>Личный кабинет</Link>
+                    <Link to='/stream-page'>Личный кабинет</Link>
                     <Link to='/'>О проекте</Link>
                     <Link to='/'>Контакты</Link>
+
+
+
+
+
+
+                    <div className='myfooter__contacts'>
+                        <a href='tel:79876543210'>+7 (987) 654-32-10</a>
+                        <a href='tel:79876543210'>+7 (987) 654-32-10</a>
+                        <a href='mailto:promir@mail.com'>E-mail: promir@mail.com</a>
+                    </div>
                 </div>
 
 
 
-            
+
         </header>
     );
 };

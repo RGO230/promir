@@ -1,6 +1,61 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import Pusher from "pusher-js";
 
 const ChatStream = () => {
+
+    const connectToSocket=()=>{
+        Pusher.logToConsole = true;
+
+        const pusher = new Pusher('4db31c7b4cddbe1cc61f', {
+            cluster: 'eu'
+        });
+
+        const channel = pusher.subscribe('chat-');
+        channel.bind('App\\Events\\MessageSend', function(data) {
+            alert(JSON.stringify(data));
+        });
+    }
+
+
+
+    useEffect(()=>{
+        connectToSocket();
+    },[])
+
+
+    const handleEve = (e) =>{
+        e.preventDefault()
+
+        let msg = 'jkjkjkjkj';
+
+        let activeUserId = '3';
+
+        fetch('http://127.0.0.1:8000/messages?message='+msg+'&id='+activeUserId,{
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json',
+                'mode': 'no-cors',
+                'Access-Control-Allow-Origin':'*',
+                'Accept':'application/json'
+            },
+            //body:JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(dat => {
+                console.log('from handleve : '+JSON.stringify(dat));
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+        //this.subscribeToPusher();
+
+
+    }
+
+
+
+
     return (
             <section className="chatbox">
                 <section className="chat-window">
@@ -85,7 +140,7 @@ const ChatStream = () => {
                         </div>
                     </article>
                 </section>
-                <form className="chat-input" onSubmit="return false;">
+                <form className="chat-input" onSubmit={handleEve}>
                     <input type="text" autoComplete="on" placeholder="Type a message"/>
                     <button>
                         <svg className="chat-input-svg"  viewBox="0 0 24 24">

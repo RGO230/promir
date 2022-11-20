@@ -353,7 +353,9 @@ footer{
     display: flex;
     gap: 10px;
 }
-
+.header-navbar .myfooter__contacts{
+    display: none;
+}
 .myfooter__contacts a{
     font-style: normal;
     font-weight: 200;
@@ -465,6 +467,7 @@ header a{
 .header-navbar{
     display: flex;
     gap: 30px;
+    position: relative;
 }
 
 .stream-frame{

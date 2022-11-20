@@ -9,7 +9,7 @@ const router = createBrowserRouter([
         element: <MainPage/>,
     },
     {
-        path: "/stream",
+        path: "/stream-page",
         element: <StreamPage/>,
     },
     {

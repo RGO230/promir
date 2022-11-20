@@ -39,6 +39,6 @@ class MessageSend implements ShouldBroadcast
     }
     public function broadcastAs()
   {
-      return 'my-event';
+      return 'Streamchat';
   } 
 }
