@@ -16,6 +16,9 @@ class Course extends Model
             'course_id','id','id','user_id'
         );  
     }
+    public function paycheck(){
+        return $this->hasOne(CourseUser::class);
+    }
     
 
 

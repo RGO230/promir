@@ -34,12 +34,12 @@ class PayController extends Controller
         return response($courseConnection->id);
     }
     public function success(Request $request){
-        // $request->validate([
+        $request->validate([
 
-        //     "user_id" => "required|exists:users,id",
-        //     "course_id" => "required|exists:courses,id",
+           
+            "OrderId" => "required|exists:course_users,id",
             
-        // ]);
+        ]);
         $order_id=$request->OrderId;
         
         $courseConnection= CourseUser::Where('id',$order_id)->update([
@@ -51,8 +51,7 @@ class PayController extends Controller
         public function error (Request $request){
             $request->validate([
 
-                "user_id" => "required|exists:users,id",
-                "course_id" => "required|exists:courses,id",
+                "OrderId" => "required|exists:course_users,id",
                 
             ]);
             $order_id=$request->OrderId;

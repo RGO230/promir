@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -144,10 +145,24 @@ class CourseController extends Controller
 
 
     public function frontindex(){
+        $this->checksubscribe();
         $user_id = Auth::user()->id;
-        $course = Course::whereHas('users',function($q) use ($user_id) {
-            $q->where('user_id',$user_id);
+        $course = Course::whereHas('paycheck',function($q) use ($user_id) {
+            $q->where('user_id',$user_id)->where('paychek',true);
         })->get();
+        
         return view('lk.index') -> with('course',$course);
+    }
+    private function checksubscribe(){
+        $courses = Course::with('paycheck')->get();
+        foreach ($courses as $course){
+           $subcribe = Carbon::parse($course->paycheck->created_at);
+           $now = Carbon::now();
+           $duration = $subcribe->diffInDays($now);
+           if ($course->paycheck->duration>$duration){
+            $course->delete();
+
+           }
+        }
     }
 }
