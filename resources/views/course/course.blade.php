@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Милармония</title>
+    <title>Курсы</title>
     <link rel="stylesheet" href="css/style.css">
     <meta charset="utf-8">
     <link href="https://fonts.cdnfonts.com/css/svn-gilroy" rel="stylesheet">
@@ -29,185 +29,203 @@
 
 <body>
     <div class="wrap">
-        <img class="ellipse" src="images/ветка верх.png" style="top:0; left: 50px;">
-        <img style="top: 0; right:0" class="ellipse" src="images/Ellipse 1.png" width="700">
+        <!-- <img style="top: 0; right:0" class="ellipse" src="images/Ellipse 1.png" width="700"> -->
         <div class="header">
             <div class="menu">
-                <a href="/" style="border-bottom: 1px solid black">Главная</a>
+                <a href="/">Главная</a>
                 <a href="service.html">Услуги</a>
-                <a href="cource.html">Курсы</a>
-                <a href="contact.html">Контакты</a>
+                <a style="border-bottom: 1px solid black" href="cource.html">Курсы</a>
+                <a href="#contact">Контакты</a>
             </div>
         </div>
-        <div class="info revealator-fade">
-            <div class="info-text">
-                <img src="images/Милармония (2).png">
-                <p>Мила Шабанова - твой проводник к гармонии.
-                    Психолог с 17-ти летним стажем, наставник, коуч, психотерапевт.</p>
-                <a class="custom-button form-open">Записаться на консультацию</a>
-            </div>
-            <div class="info-img">
-                <div style="display: flex;">
-                    <img class="main-image" src="images/фото с главной.png">
-                    <img class="tree-image" src="images/ветка бок.png">
-                </div>
-                <img style="width: 60%" src="images/Line 2.png">
-            </div>
-        </div>
+        <img style="top: 0; right:0" class="ellipse" src="images/Ellipse 1.png" width="700">
+
         <div class="about revealator-fade revealator-once revealator-duration15">
 
-            <img src="images/фото+контур.png">
+            <img src="images/DSC03358 1.png">
 
-            <div class="about-text">
-                <h2>ОБО МНЕ</h2>
-                <p>Меня зовут Людмила Шабанова, я практикующий сертифицированный и дипломированный психолог, работаю в
-                    транскультурном краткосрочном методе позитивная психотерапия.
+            <div class="about-text ">
+                <h2>Курс «Мое Я»</h2>
+                <p>Курс создан и разработан для поиска и познания самого себя.
+                    Будет проходить целостная работа над установками, которые навязали в детстве, вашим окружением и
+                    определением чего хотите именно Вы.
+                    Осмысление самого себя – важный шаг в жизни любого человека.
+                    Курс поможет Вам обрести гармонию, реализоваться в профессиональной и личной жизни, быть счастливым
+                    и самосовершенствоваться.
                 </p>
-                <p>
-                <ul>
-                    <li>Life coach, практикующий психолог и тренер саморазвития;</li>
-                    <li>Ведущая авторских тренингов "Путь к себе настоящей", "Сексуальность и финансы", "Женщина для
-                        лучших отношений", "Красивая и спокойная", " Вкусная жизнь".</li>
-                    <li>Сертифицированный женский тренер по вопросам чувственности, сексолог; Арт-терапевт;</li>
-                    <li>Психотерапевт, специалист по работе в периоды кризисов, перемен.</li>
-                    <li>Специалист по метафорическим картам (МАК).</li>
-                    <li>Автор ретритов «Путешествие к чувственности», «Очищение стихиями»</li>
-                    <li>Энергопроводник программ духовного роста, тетахиллер.</li>
-                </ul>
-                </p>
+                <p>Стоимость пакета:</p>
+                <p style="margin-bottom: 50px;" class="price">5000 ₽/ МЕС</p>
+                <a href="" class="custom-button form-open">Выбрать</a>
             </div>
         </div>
-        <h2 class="title">ДИПЛОМЫ</h2>
-
-        <div class="slider revealator-fade">
-            <img src="images/05.02.2020 (2)/05.02.2020 (2)-1.png">
-            <img src="images/05.02.2020 (2)/05.02.2020 (2)-2.png">
-            <img src="images/AWARENESS/AWARENESS-1.png">
-            <!-- <img src="images/AWARENESS/AWARENESS-2.png"> -->
-            <img src="images/Certificate/Certificate-01.png">
-            <img src="images/Certificate/Certificate-02.png">
-            <img src="images/Certificate/Certificate-03.png">
-            <img src="images/Certificate/Certificate-04.png">
-            <img src="images/Certificate/Certificate-05.png">
-            <img src="images/Certificate/Certificate-06.png">
-            <img src="images/Certificate/Certificate-07.png">
-            <img src="images/Certificate/Certificate-08.png">
-            <img src="images/Certificate/Certificate-09.png">
-            <img src="images/Certificate/Certificate-10.png">
-            <img src="images/President/President-1.png">
-            <img src="images/05.02.2020 (2)/05.02.2020 (2)-1.png">
-            <img src="images/05.02.2020 (2)/05.02.2020 (2)-2.png">
-        </div>
-
-        <div class="revealator-fade"
-            style="margin: 100px 0; align-self: flex-start; display: flex; align-items: center">
-            <img class="line-img" src="images/Line 24.png">
-            <h2 class="title-2">Подписывайтесь на наш<br>
-                Telegram-канал</h2>
-        </div>
-        <div class="revealator-fade line-2" style="align-self: flex-end; display: flex; align-items: center">
-            <form class="tg-form">
-                <input type="text" placeholder="+7 (123) 456-78-91">
-                <button class="custom-button">Подписаться</button>
-            </form>
-            <img class="line-img" src="images/Line 24.png">
-        </div>
-        <h2 class="title" style="align-self: center;margin-left:0">личная консультация</h2>
-        <div class="consult revealator-fade">
-            <div class="consult-text">
+        <div style="margin-top: 100px;" class="consult revealator-fade">
+            <div class="consult-text" style="width:100%">
                 <div class="consult-text-item">
                     <div class="number-wrap">
                         <span class="number">1</span>
                         <div>
-                            <p>консультация</p>
-                            <p class="price">10 000 ₽</p>
+                            <p>Курс «Мои возможности» </p>
+                            <p class="price">2000 ₽</p>
                         </div>
                     </div>
-                    <a class="custom-button form-open"">Выбрать</a>
+                    <a class="custom-button form-open">Выбрать</a>
+                </div>
+                <div class="consult-text-item">
+                    <div class="number-wrap">
+                        <span class="number">2</span>
+                        <div>
+                            <p>Курс «Целостность. Мои сильные и слабые стороны» </p>
+                            <p class="price">2000 ₽</p>
+                        </div>
+                    </div>
+                    <a class="custom-button form-open">Выбрать</a>
+                </div>
+                <div class="consult-text-item">
+                    <div class="number-wrap">
+                        <span class="number">3</span>
+                        <div>
+                            <p>Курс «Ценность. Моё призвание, карьера и дело жизни» </p>
+                            <p class="price">2000 ₽</p>
+                        </div>
+                    </div>
+                    <a class="custom-button form-open">Выбрать</a>
+                </div>
+                <div class="consult-text-item">
+                    <div class="number-wrap">
+                        <span class="number">4</span>
+                        <div>
+                            <p>Обратная связь</p>
+                            <p class="price">+2000 ₽ к курсу</p>
+                        </div>
+                    </div>
+                    <a class="custom-button form-open">Выбрать</a>
+                </div>
+                <div class="consult-text-item">
+                    <div class="number-wrap">
+                        <span class="number">5</span>
+                        <div>
+                            <p>Сопровождение</p>
+                            <p class="price">5 мест для прохождения курса в сопровождении</p>
+                        </div>
+                    </div>
+                    <a class="custom-button form-open">Выбрать</a>
+                </div>
+            </div>
+        </div>
+        <!-- <div style="width:100%; position:relative; z-index: -1;">
+            <img src="images/Ellipse 5.png" style="position:absolute; left:0; width: 200px; top: -300px">
+            <img src="images/Ellipse 6.png" style="position:absolute; left:250px; width: 50px; top: -150px">
+        </div> -->
+        <!-- <div class="about revealator-fade revealator-once revealator-duration15">
+            <div class="about-text ">
+                <h2>Полный курс
+                    «мои отношения»</h2>
+                <p style="margin-bottom: 50px;">
+                    Отношения - это все, что окружает нас и показывает нам как мы взаимодействуем с этим миром.
+                    Данный курс поможет понять умеете ли вы выстраивать отношения, поработать над собой и стать тем
+                    человеком, с которым хочется быть и создавать единое целое.
+                    Вы сможете очиститься, исцелиться, освободиться от ограничивающих убеждений, мешающих осознать и
+                    создать любовь и изменить искаженные программы о сексе и сексуальности.
+                    Цель курса – пробудить любовь к себе и впустить в жизнь любовь.
+
+                </p>
+                <p>Стоимость:</p>
+                <p style="margin-bottom: 50px;" class="price">30 000 ₽/ МЕС</p>
+                <a href="" class="custom-button form-open">Выбрать</a>
+            </div>
+            <img src="images/DSC04001 1.png">
+        </div>
+        <div style="margin-top: 100px;" class="consult revealator-fade">
+            <div class="consult-text" style="width:100%">
+                <div class="consult-text-item">
+                    <div class="number-wrap">
+                        <span class="number">1</span>
+                        <div>
+                            <p>Курс «Отношения с собой»  </p>
+                            <p class="price">2000 ₽</p>
+                        </div>
+                    </div>
+                    <a class="custom-button form-open">Выбрать</a>
+                </div>
+                <div class="consult-text-item">
+                    <div class="number-wrap">
+                        <span class="number">2</span>
+                        <div>
+                            <p>Курс «Отношения с миром» </p>
+                            <p class="price">2000 ₽</p>
+                        </div>
+                    </div>
+                    <a class="custom-button form-open">Выбрать</a>
+                </div>
+                <div class="consult-text-item">
+                    <div class="number-wrap">
+                        <span class="number">3</span>
+                        <div>
+                            <p>Курс «Отношения с партнером» </p>
+                            <p class="price">2000 ₽</p>
+                        </div>
+                    </div>
+                    <a class="custom-button form-open">Выбрать</a>
+                </div>
+                <div class="consult-text-item">
+                    <div class="number-wrap">
+                        <span class="number">4</span>
+                        <div>
+                            <p>Курс «Отношения в социуме</p>
+                            <p class="price">2000 ₽</p>
+                        </div>
+                    </div>
+                    <a class="custom-button form-open">Выбрать</a>
+                </div>
+                <div class="consult-text-item">
+                    <div class="number-wrap">
+                        <span class="number">5</span>
+                        <div>
+                            <p>Курс «Отношения с деньгами</p>
+                            <p class="price">2000 ₽</p>
+                        </div>
+                    </div>
+                    <a class="custom-button form-open">Выбрать</a>
                 </div>
                 <div class="consult-text-item">
                     <div class="number-wrap">
                         <span class="number">6</span>
                         <div>
-                            <p>консультация</p>
-                            <p class="price">48 000 ₽</p>
+                            <p>Обратная связь</p>
+                            <p class="price">+2000 ₽ к курсу</p>
                         </div>
                     </div>
                     <a class="custom-button form-open">Выбрать</a>
                 </div>
                 <div class="consult-text-item">
                     <div class="number-wrap">
-                        <span class="number">12</span>
+                        <span class="number">7</span>
                         <div>
-                            <p>консультация</p>
-                            <p class="price">84 000 ₽</p>
-                        </div>
-                    </div>
-                    <a class="custom-button form-open">Выбрать</a>
-                </div>
-                <div class="consult-text-item">
-                    <div class="number-wrap">
-                        <span class="number">24</span>
-                        <div>
-                            <p>консультация</p>
-                            <p class="price">144 000 ₽</p>
+                            <p>Сопровождение</p>
+                            <p class="price">+15 000 ₽ к курсу</p>
                         </div>
                     </div>
                     <a class="custom-button form-open">Выбрать</a>
                 </div>
             </div>
-            <img src="images/фото+контур (2).png">
-        </div>
-        <h2 class="title" style="align-self: center;margin-left:0">отзывы</h2>
-        <div class="slider revealator-fade">
-            <div class="review-item">
-                <div style="background-image: url(images/freestocks-9UVmlIb0wJU-unsplash.jpg);" class="slider-image"></div>
-                <span>01.02.2022</span>
-                <p>Мила, благодарю за вебинар. Мне нравится находиться в пространстве развивающихся с людей с активными, большими целями. 
-                    От себя хочу отметить, что больше стала впускать в свою жизнь подарков и бонусов. И сразу же выдали премию неожиданную на работе ☺️😅</p>
-            </div>
-            <div class="review-item">
-                <div style="background-image: url(images/clarisse-meyer-x9cXI2eQLBw-unsplash.jpg);" class="slider-image"></div>
-                <span>01.02.2022</span>
-                <p>Мила, привет!
-                    Прошла неделя после финансового марафона и ко мне пришла работа, которую я так долго ждала. Можно сказать, работа мечты. После такого количества собеселований и отказов, я уже совсем руки опустила, перестала ждать и тут просто мой знакомый сказал, что у них освободилось место главного бухгалтера и меня взяли!! Теперь у меня соцпакет, белая зарплата и даже стоматология! я очень довольна, благодарю!!🥰💋</p>
-            </div>
-            <div class="review-item">
-                <div style="background-image: url(images/axel-vazquez-A77FAov-OzI-unsplash.jpg);" class="slider-image"></div>
-                <span>01.02.2022</span>
-                <p>Милочка, у меня муж получил повышение. Я сама ничего не получила, но сработало вот так🤩 Мы закрыли наши финансовые трудности, которые я обозначила в запросе, его прибавкой
-                    Благодарю, дорогая❤️❤️❤️</p>
-            </div>
-            <div class="review-item">
-                <div style="background-image: url(images/marie-michele-bouchard-3U9BCWHMhUw-unsplash.jpg);" class="slider-image"></div>
-                <span>01.02.2022</span>
-                <p>Здравствуйте, девушки! 
-                    Я благодарю за семинар, он поменял мое состояние в отношениях. Я теперь довольна всем происходящим, я поняла как перестать жить в ожидании определенных поступков от партнера, нет ожидания- нет разочарования! Я довольна собой и теперь моя любовь к себе растёт с каждым днём!  Хороший старт для дальнейшего развития женственности и чувственности! 
-                    Благодарю Мила за такой результат!</p>
-            </div>
-            <div class="review-item">
-                <div style="background-image: url(images/marco-chilese-nHIb0s-BZMA-unsplash.jpg);" class="slider-image"></div>
-                <span>01.02.2022</span>
-                <p>Мила, очень благодарна тебе за этот семинар! Увидела и отпустила страхи, поняла, какие отношения хочу и к чему стремиться. 
-                    (Просто наверное не с наскока 😂) 
-                    А медитации дали отпустить многое на глубинном уровне ❤️❤️❤️
-                    Как всегда то, что ты делаешь, это  большая любовь!</p>
-            </div>
-        </div>
-        <div class="social">
-            <a><img src="images/Group тг.png"></a>
-            <a><img src="images/Group почта.png"></a>
+        </div> -->
+        <div class="social" id="contact">
+            <a href="https://t.me/milasoullove"><img src="images/Group тг.png"></a>
+            <a href="mailto:Milarmony@gmail.com"><img src="images/Group почта.png"></a>
             <a><img src="images/Group ю туб.png"></a>
         </div>
+        <div class="footer" id="contact">
+            <a target="_blank" href="/Оферта ПРО МИР.pdf">Политика конфиденциальности</a>
+            <a target="_blank" href="/_Политика_обработки_перс_данных_конфиденциальности_ПРО_МИР.pdf">Оферта</a>
+            <a target="_blank" href="/Реквизиты.pdf">Реквизиты</a>
+        </div>
     </div>
-
-
-    <div class="form">
+        <div class="form">
     </div>
     <div class="modal">
         <p>Заявка</p>
         <form class="modal-form">
-            <p>Ваше имя
+            <p class="modal-title">Ваше имя
                 <input type="text" placeholder="Введите имя">
             </p>
 
@@ -242,7 +260,7 @@
         $(document).ready(function () {
             $('.review-slider').slick({
                 slidesToShow: 3,
-                slidesToScroll: 3,
+                slidesToScroll: 1,
                 arrows: true,
                 dots: true
                 // centerMode: true,
@@ -253,19 +271,17 @@
                 slidesToShow: 3,
                 slidesToScroll: 1,
                 arrows: true,
-                dots: true,
-                responsive: [
-                    {
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                            infinite: true,
-                            dots: true
-                        }
-                    }
-                ]
+                dots: true
                 // centerMode: true,
+            });
+        });
+        $(document).ready(function () {
+            $('a[href^="#"]').click(function () {
+                var el = $(this).attr('href');
+                $('body').animate({
+                    scrollTop: $(el).offset().top
+                }, 2000);
+                return false;
             });
         });
     </script>
