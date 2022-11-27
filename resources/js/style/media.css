@@ -1,0 +1,175 @@
+@media (max-width: 1455px) {
+    .first-banner__title{
+        font-size: 185px;
+    }
+}
+
+
+@media (max-width: 1243px) {
+
+    .second-banner__grass-earth__bottle {
+        bottom: calc(var(--second-banner) + 27px);
+        left: 40%;
+        height: 80%;
+    }
+
+    .second-banner__grass-earth__grass {
+        left: 25%;
+        width: 50%;
+    }
+}
+
+@media (max-width: 990px) {
+    .first-banner__title{
+        font-size: 100px;
+    }
+    .second-banner__grass-earth__bottle {
+        bottom: calc(var(--second-banner) + 13px);
+        left: 36%;
+        height: 72%;
+    }
+}
+
+@media (max-width: 860px) {
+    .burger{
+        display: block;
+    }
+    .first-banner__title{
+        font-size: 100px;
+    }
+    .first-banner__blur{
+        display: none;
+    }
+    .first-banner__mob-button {
+
+        position: absolute;
+        margin-top: 25%;
+        width: 100%;
+        z-index: 5;
+        display: flex;
+        justify-content: center;
+
+    }
+    .first-banner__mob-button button{
+        max-width: 500px;
+        padding: 10px;
+        background: rgba(0,0,0,0);
+        border: 2px dashed #1558a4;
+        font-size: 20px;
+        color: #1558a4;
+    }
+
+    
+
+        .header-navbar{
+            flex-direction: column;
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 320px;
+            bottom: 0;
+            background: #0d4f9f;
+            align-items: center;
+            justify-content: center;
+            transform: translateX(100%);
+            transition: 1s;
+        }
+        .header-navbar.active{
+
+
+            transform: translateX(0);
+        }
+
+    .header-navbar a{
+        color: white;
+
+    }
+
+    footer{
+        display: none;
+    }
+
+    .banner{
+        height: 100vh;
+    }
+    .five-banner{
+        background-position: center;
+    }
+}
+
+@media (max-width: 805px){
+    .second-banner__grass-earth__bottle {
+        bottom: calc(var(--second-banner) + 18px);
+        left: 35%;
+        height: 72%;
+    }
+    .second-banner__grass-earth__grass {
+        left: 10%;
+        width: 80%;
+    }
+}
+
+@media (max-width: 680px){
+    .first-banner__title{
+        margin-top: 100px;
+    }
+    .first-banner__mob-button{
+        margin-top: 200px;
+    }
+    .first-banner__mob-button button{
+        margin: 0 10px;
+        font-size: 15px;
+    }
+    .myfooter__contacts{
+        flex-direction: column;
+        position: absolute;
+        bottom: 15px;
+        align-items: center;
+    }
+
+    .myfooter__contacts a{
+        font-size: 13px;
+    }
+    .third-banner h1{
+        text-align: center;
+    }
+    .header-navbar .myfooter__contacts{
+        display: flex;
+    }
+}
+
+@media (max-width: 545px){
+    .first-banner__title{
+        font-size: 62px;
+    }
+
+
+}
+
+
+
+@media (max-width: 479px){
+    .second-banner__grass-earth__bottle {
+        bottom: calc(var(--second-banner) + -10px);
+        left: 35%;
+        height: 72%;
+    }
+    .second-banner__grass-earth__grass {
+        left: 4%;
+        width: 90%;
+        bottom: calc(var(--second-banner) + -9px);
+    }
+    .fourth-banner__text{
+        padding: 0 15px;
+    }
+
+}
+
+@media (max-width: 420px){
+
+.second-banner__grass-earth__bottle {
+    left: 30%;
+    bottom: calc(var(--second-banner) + -40px);
+}
+}
+

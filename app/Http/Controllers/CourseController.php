@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class CourseController extends Controller
 {
@@ -42,7 +44,7 @@ class CourseController extends Controller
             "descr" => "string|required",
             "video" => "string|required",
             "file" => "file|required",
-            "price"=>"price|required"
+            "price"=>"int|required"
         ]);
 
         $path = '';
@@ -60,7 +62,7 @@ class CourseController extends Controller
         $course->descr = $request->descr;
         $course->image = $path;
         $course->video = $request->video;
-        $course->price=$request->price;
+        $course->price = $request->price;
         $course->save();
 
         return redirect()->route('course.index');
@@ -104,7 +106,7 @@ class CourseController extends Controller
             "descr" => "string|required",
             "video" => "string|required",
             "file" => "file",
-            "price"=>"price|required"
+            "price"=>"int|required"
         ]);
 
         $path = $course->image;
@@ -138,5 +140,14 @@ class CourseController extends Controller
     {
         $course->delete();
         return redirect()->back();
+    }
+
+
+    public function frontindex(){
+        $user_id = Auth::user()->id;
+        $course = Course::whereHas('users',function($q) use ($user_id) {
+            $q->where('user_id',$user_id);
+        })->get();
+        return view('lk.index') -> with('course',$course);
     }
 }
