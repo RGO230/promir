@@ -21,6 +21,7 @@
                         <td>{{ $item->descr }}</td>
                         <td><img width="100" src="{{$item->image}}"></td>
                         <td>{{$item->video}}</td>
+                        <td>До окончания подписки:{{$item->duration}}</td>
                     </tr>
                 @endforeach
                 </tbody>

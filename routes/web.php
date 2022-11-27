@@ -34,8 +34,9 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/stream/{stream}/destroy', [App\Http\Controllers\StreamController::class, 'destroy']);
     Route::post('/stream/{stream}/update', [App\Http\Controllers\StreamController::class, 'update']);
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'],function(){})->name('home');
+    Route::resource('course', 'CourseController');
 });
-Route::resource('course', 'CourseController');
+
 Route::get('/{any}', function () {
     return view('welcome');
     })->where('any', '.*');
