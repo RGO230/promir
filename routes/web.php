@@ -22,7 +22,7 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/some/2', function(){return 'wafwfewef';});
     });
 //   Route::middleware(['middleware'=>'role'])->group(function(){ 
-    Route::resource('course', App\Http\Controllers\CourseController::class);
+   
     Route::get('/course/{course}/destroy', [App\Http\Controllers\CourseController::class, 'destroy']);
     Route::post('/course/{course}/update', [App\Http\Controllers\CourseController::class, 'update']);
     Route::resource('stream', App\Http\Controllers\StreamController::class);
@@ -30,7 +30,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/stream/{stream}/update', [App\Http\Controllers\StreamController::class, 'update']);
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'],function(){})->name('home');
 });
-
+Route::resource('course', 'CourseController');
 Route::get('/{any}', function () {
     return view('welcome');
     })->where('any', '.*');

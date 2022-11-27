@@ -16,6 +16,7 @@ class Course extends Model
             'course_id','id','id','user_id'
         );  
     }
+    
 
 
     // public function users(){
