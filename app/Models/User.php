@@ -59,5 +59,14 @@ class User extends Authenticatable implements JWTSubject
     public function messages(){
         return $this->hasMany(Chat::class);
     }
+    public function getusers(){
+        return $this->hasMany(StreamUser::class);
+    }
+    public function streams(){
+        return $this->hasManyThrough(
+            Stream::class, StreamUser::class,
+            'user_id','id','id','stream_id'
+        );  
+    }
 
 }

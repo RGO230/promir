@@ -11,9 +11,7 @@ use App\Models\Course;
 class PayController extends Controller
 
 {
-    static $terminal   = '1668606448036DEMO';
-    static $secret_key = 'sn5yjmrvugjjktdi';
-
+    
 
     public function init(Request $request){
         
