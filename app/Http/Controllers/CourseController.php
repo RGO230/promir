@@ -26,11 +26,18 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function frontIndex()
+    {
+        return view('front.course', [
+            'courses' => Course::all()
+        ]);
+    }
+
+
     public function create()
     {
         return view('course.create');
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -143,7 +150,7 @@ class CourseController extends Controller
     }
 
 
-    public function frontindex(){
+    public function frontLk(){
         $user_id = Auth::user()->id;
         $course = Course::whereHas('users',function($q) use ($user_id) {
             $q->where('user_id',$user_id);

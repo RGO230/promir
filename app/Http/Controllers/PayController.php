@@ -5,8 +5,7 @@ use Kenvel\Tinkoff;
 use App\Models\CourseUser;
 use Illuminate\Http\Request;
 use App\Models\Course;
-
-
+use Illuminate\Support\Facades\Auth;
 
 class PayController extends Controller
 
@@ -18,20 +17,20 @@ class PayController extends Controller
     public function init(Request $request){
         
         $request->validate([
-
-            "user_id" => "required|exists:users,id",
             "course_id" => "required|exists:courses,id",
-            
         ]);
        
         $courseConnection = new CourseUser;
-        $courseConnection->user_id = $request->user_id;
-        $courseConnection->course_id=$request->course_id;
-        $courseConnection->payment_id=0;
-        $course=Course::where('id',$courseConnection->course_id)->first();
+        $courseConnection->user_id = Auth::user()->id;
+        $courseConnection->course_id= $request->course_id;
+        $courseConnection->payment_id = 0;
+        $course= Course::where('id',$request->course_id)->first();
         $courseConnection->duration = $course->duration;
         $courseConnection->save();
-        return response($courseConnection->id);
+        return response([
+            'order_id' => $courseConnection->id,
+            'price' => $course->price
+        ]);
     }
     public function success(Request $request){
         // $request->validate([

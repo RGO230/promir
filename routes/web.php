@@ -15,27 +15,31 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/');
 Route::get('/', function () {
-    return view('course.course');
+    return view('front.index');
 });
+
+Route::get('/service', function () {
+    return view('front.service');
+});
+
+Route::get('/courses','CourseController@frontIndex');
+
+Route::post('initpay','PayController@init');
+
+Route::get('pay-success','PayController@success');
+Route::get('pay-error','PayController@error');
 
 Auth::routes();
 Route::middleware(['auth'])->group(function(){
-    Route::get('lk/course/', 'App\Http\Controllers\CourseController@frontindex');
+    Route::get('lk/course/', 'CourseController@frontLk')->name('front.course');
     Route::middleware(['role'])->group(function(){
-        Route::get('/some/2', function(){return 'wafwfewef';});
+        Route::resource('course', 'CourseController');
+        Route::get('/course/{course}/destroy', [App\Http\Controllers\CourseController::class, 'destroy']);
+        Route::post('/course/{course}/update', [App\Http\Controllers\CourseController::class, 'update']);
+        Route::resource('stream', 'StreamController');
+        Route::get('/stream/{stream}/destroy', [App\Http\Controllers\StreamController::class, 'destroy']);
+        Route::post('/stream/{stream}/update', [App\Http\Controllers\StreamController::class, 'update']);
     });
-//   Route::middleware(['middleware'=>'role'])->group(function(){ 
-   
-    Route::get('/course/{course}/destroy', [App\Http\Controllers\CourseController::class, 'destroy']);
-    Route::post('/course/{course}/update', [App\Http\Controllers\CourseController::class, 'update']);
-    Route::resource('stream', App\Http\Controllers\StreamController::class);
-    Route::get('/stream/{stream}/destroy', [App\Http\Controllers\StreamController::class, 'destroy']);
-    Route::post('/stream/{stream}/update', [App\Http\Controllers\StreamController::class, 'update']);
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'],function(){})->name('home');
 });
-Route::resource('course', 'CourseController');
-Route::get('/{any}', function () {
-    return view('welcome');
-    })->where('any', '.*');

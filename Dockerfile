@@ -12,8 +12,14 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     zip \
-    unzip
-
+    unzip \
+    nodejs \
+    npm 
+    
+RUN apt-get update \
+     && apt-get install -y libzip-dev \
+     && docker-php-ext-install zip
+     
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -30,5 +36,6 @@ RUN mkdir -p /home/$user/.composer && \
 
 # Set working directory
 WORKDIR /var/www
-
+RUN npm install
+# RUN npm run dev
 USER $user

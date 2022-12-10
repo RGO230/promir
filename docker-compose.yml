@@ -7,34 +7,30 @@ services:
         uid: 1000
       context: ./
       dockerfile: Dockerfile
-    image: travellist
-    container_name: travellist-app
+    image: cuckoo
     restart: unless-stopped
     working_dir: /var/www/
     volumes:
       - ./:/var/www
     networks:
-      - travellist
+      - cuckoo
 
-  db:
-    image: mysql:5.7
-    container_name: travellist-db
-    restart: unless-stopped
-    environment:
-      MYSQL_DATABASE: promir
-      MYSQL_ROOT_PASSWORD: toor
-      MYSQL_PASSWORD: toor
-      MYSQL_USER: biba
-      SERVICE_TAGS: dev
-      SERVICE_NAME: mysql
+  mysql:
+    image: mariadb:10.3
+    ports:
+      - "33076:3306"
+    restart: always
     volumes:
-      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+      - type: volume
+        target: /var/lib/mysql
+      # - ./docker-compose/mysql/init_db.sql:/docker-entrypoint-initdb.d/dump.sql
+      - ./dump_prod.sql:/docker-entrypoint-initdb.d/dump.sql
+    env_file: .env
     networks:
-      - travellist
+      - cuckoo
 
   nginx:
     image: nginx:alpine
-    container_name: travellist-nginx
     restart: unless-stopped
     ports:
       - 8000:80
@@ -42,8 +38,8 @@ services:
       - ./:/var/www
       - ./docker-compose/nginx:/etc/nginx/conf.d/
     networks:
-      - travellist
+      - cuckoo
 
 networks:
-  travellist:
+  cuckoo:
     driver: bridge
