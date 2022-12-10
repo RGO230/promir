@@ -43,7 +43,7 @@ class CourseController extends Controller
         $request->validate([
             "title" => "string|required",
             "descr" => "string|required",
-            "videofile" => "required",
+            "video" => "string|required",
             "file" => "file|required",
             "price"=>"int|required"
         ]);
@@ -57,23 +57,11 @@ class CourseController extends Controller
             $value->move(public_path() . '/uploads', $imageName);
             $path = '/uploads/' . $imageName;
         }
-        $videopath='';
-
-        if ($request->has('videofile')) {
-            $value = $request->file('videofile');
-            $ext = $value->extension();
-            $videoName = uniqid() . '.' . $ext;
-            $value->move(public_path() . '/uploads', $videoName);
-            $videopath = '/uploads/' . $videoName;
-        }
-        
-        
-
         $course = new Course;
         $course->title = $request->title;
         $course->descr = $request->descr;
         $course->image = $path;
-        $course->video = $videopath;
+        $course->video = $request->video;
         $course->price = $request->price;
         $course->save();
 
@@ -116,7 +104,7 @@ class CourseController extends Controller
         $request->validate([
             "title" => "string|required",
             "descr" => "string|required",
-            "videofile" => "file",
+            "video" => "string|required",
             "file" => "file",
             "price"=>"int|required"
         ]);
@@ -130,20 +118,11 @@ class CourseController extends Controller
             $value->move(public_path() . '/uploads', $imageName);
             $path = '/uploads/' . $imageName;
         }
-        $videopath=$course->video;
-
-        if ($request->has('videofile')) {
-            $value = $request->file('videofile');
-            $ext = $value->extension();
-            $videoName = uniqid() . '.' . $ext;
-            $value->move(public_path() . '/uploads', $videoName);
-            $videopath = '/uploads/' . $videoName;
-        }
 
         $course->update([
             "title" => $request->title,
             "descr" => $request->descr,
-            "video" => $videopath,
+            "video" => $request->video,
             "image" => $path,
             "price" =>$request->price
         ]);
