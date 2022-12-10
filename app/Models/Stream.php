@@ -19,6 +19,10 @@ class Stream extends Model
     }
     public function messages(){
         return $this->hasMany(Chat::class);
+        
+    }
+    public function token(){
+        return $this->hasMany(StreamUser::class);
     }
     
 }

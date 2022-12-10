@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -42,11 +43,11 @@ class CourseController extends Controller
         $request->validate([
             "title" => "string|required",
             "descr" => "string|required",
-            "video" => "string|required",
+            "videofile" => "required",
             "file" => "file|required",
             "price"=>"int|required"
         ]);
-
+        
         $path = '';
 
         if ($request->has('file')) {
@@ -56,12 +57,23 @@ class CourseController extends Controller
             $value->move(public_path() . '/uploads', $imageName);
             $path = '/uploads/' . $imageName;
         }
+        $videopath='';
+
+        if ($request->has('videofile')) {
+            $value = $request->file('videofile');
+            $ext = $value->extension();
+            $videoName = uniqid() . '.' . $ext;
+            $value->move(public_path() . '/uploads', $videoName);
+            $videopath = '/uploads/' . $videoName;
+        }
+        
+        
 
         $course = new Course;
         $course->title = $request->title;
         $course->descr = $request->descr;
         $course->image = $path;
-        $course->video = $request->video;
+        $course->video = $videopath;
         $course->price = $request->price;
         $course->save();
 
@@ -104,7 +116,7 @@ class CourseController extends Controller
         $request->validate([
             "title" => "string|required",
             "descr" => "string|required",
-            "video" => "string|required",
+            "videofile" => "file",
             "file" => "file",
             "price"=>"int|required"
         ]);
@@ -118,11 +130,20 @@ class CourseController extends Controller
             $value->move(public_path() . '/uploads', $imageName);
             $path = '/uploads/' . $imageName;
         }
+        $videopath=$course->video;
+
+        if ($request->has('videofile')) {
+            $value = $request->file('videofile');
+            $ext = $value->extension();
+            $videoName = uniqid() . '.' . $ext;
+            $value->move(public_path() . '/uploads', $videoName);
+            $videopath = '/uploads/' . $videoName;
+        }
 
         $course->update([
             "title" => $request->title,
             "descr" => $request->descr,
-            "video" => $request->video,
+            "video" => $videopath,
             "image" => $path,
             "price" =>$request->price
         ]);
@@ -144,10 +165,24 @@ class CourseController extends Controller
 
 
     public function frontindex(){
+        $this->checksubscribe();
         $user_id = Auth::user()->id;
-        $course = Course::whereHas('users',function($q) use ($user_id) {
-            $q->where('user_id',$user_id);
+        $course = Course::whereHas('paycheck',function($q) use ($user_id) {
+            $q->where('user_id',$user_id)->where('paychek',true);
         })->get();
+        
         return view('lk.index') -> with('course',$course);
+    }
+    private function checksubscribe(){
+        $courses = Course::with('paycheck')->get();
+        foreach ($courses as $course){
+           $subcribe = Carbon::parse($course->paycheck->created_at);
+           $now = Carbon::now();
+           $duration = $subcribe->diffInDays($now);
+           if ($course->paycheck->duration>$duration){
+            $course->delete();
+
+           }
+        }
     }
 }

@@ -23,12 +23,14 @@
                         <td>{{ $item->title }}</td>
                         <td>{{ $item->descr }}</td>
                         <td><img width="100" src="{{$item->image}}"></td>
-                        <td>{{$item->video}}</td>
+                        <td><img width="100" src="{{$item->video}}"></td>
+                        <td>{{$item->price}}</td>
                         <td style="text-align:right;">
                             <a href="/course/{{ $item->id }}/edit" class="btn btn-primary">Редактировать</a>
                             <a href="/course/{{ $item->id }}/destroy" class="btn btn-danger">Удалить</a>
                         </td>
-                        <td>{{$item->price}}</td>
+                       
+                       
                     </tr>
                 @endforeach
                 </tbody>

@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -39,6 +40,12 @@ class User extends Authenticatable
         'remember_token',
         
     ];
+    public function getJWTIdentifier() {
+        return $this->getKey();
+    }
+    public function getJWTCustomClaims() {
+        return [];
+    }    
 
     /**
      * The attributes that should be cast.
@@ -51,6 +58,15 @@ class User extends Authenticatable
     ];
     public function messages(){
         return $this->hasMany(Chat::class);
+    }
+    public function getusers(){
+        return $this->hasMany(StreamUser::class);
+    }
+    public function streams(){
+        return $this->hasManyThrough(
+            Stream::class, StreamUser::class,
+            'user_id','id','id','stream_id'
+        );  
     }
 
 }

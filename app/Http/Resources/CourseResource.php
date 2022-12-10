@@ -19,7 +19,7 @@ class CourseResource extends JsonResource
             'title'=>$this->title,
             'decsr'=>$this->descr,
             'image'=>$this->image,
-            'price'=>$this->price
+            'price'=>$this->price,
         ];
     }
 }

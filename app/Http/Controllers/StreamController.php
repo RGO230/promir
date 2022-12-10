@@ -58,7 +58,7 @@ class StreamController extends Controller
         $stream->descr = $request->descr;
         $stream->preview_image = $path;
         $stream->youtube_flow = $request->youtube_flow;
-        $stream->streamtoken =$request->youtube_flow.Str::random(10);
+        $stream->streamtoken =Str::random(10);
         $stream->save();
 
         return redirect()->route('stream.index');

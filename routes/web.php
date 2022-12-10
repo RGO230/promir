@@ -15,20 +15,26 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Route::get('/');
+Route::get('/', function () {
+    return view('course.course');
+});
+
 Auth::routes();
 Route::middleware(['auth'])->group(function(){
-    Route::get('lk/course/', 'App\Http\Controllers\CourseController@frontindex');
+    Route::get('lk/course/', 'CourseController@frontindex');
     Route::middleware(['role'])->group(function(){
         Route::get('/some/2', function(){return 'wafwfewef';});
     });
 //   Route::middleware(['middleware'=>'role'])->group(function(){ 
-    Route::resource('course', App\Http\Controllers\CourseController::class);
+   
     Route::get('/course/{course}/destroy', [App\Http\Controllers\CourseController::class, 'destroy']);
     Route::post('/course/{course}/update', [App\Http\Controllers\CourseController::class, 'update']);
     Route::resource('stream', App\Http\Controllers\StreamController::class);
     Route::get('/stream/{stream}/destroy', [App\Http\Controllers\StreamController::class, 'destroy']);
     Route::post('/stream/{stream}/update', [App\Http\Controllers\StreamController::class, 'update']);
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'],function(){})->name('home');
+    Route::resource('course', 'CourseController');
 });
 
 Route::get('/{any}', function () {
