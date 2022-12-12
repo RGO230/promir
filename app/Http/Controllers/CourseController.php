@@ -51,7 +51,12 @@ class CourseController extends Controller
             "descr" => "string|required",
             "video" => "string|required",
             "file" => "file|required",
+<<<<<<< Updated upstream
             "price"=>"int|required"
+=======
+            "price"=>"price|required",
+            "course_id"=>"integer|nullable",
+>>>>>>> Stashed changes
         ]);
 
         $path = '';
@@ -69,7 +74,12 @@ class CourseController extends Controller
         $course->descr = $request->descr;
         $course->image = $path;
         $course->video = $request->video;
+<<<<<<< Updated upstream
         $course->price = $request->price;
+=======
+        $course->price=$request->price;
+        $course->course_id=$request->course_id;
+>>>>>>> Stashed changes
         $course->save();
 
         return redirect()->route('course.index');
@@ -131,7 +141,8 @@ class CourseController extends Controller
             "descr" => $request->descr,
             "video" => $request->video,
             "image" => $path,
-            "price" =>$request->price
+            "price" =>$request->price,
+            "course_id"=>$request->course_id
         ]);
 
         return redirect()->route('course.index');

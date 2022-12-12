@@ -5,6 +5,7 @@
             <h2>Курсы</h2>  
             <a href="/course/create" class="btn btn-primary"> + Добавить новый</a>
         </div>
+<<<<<<< Updated upstream
         <div class="panel-body">
             <table class="table">
                 <thead class="thead-dark">
@@ -33,6 +34,26 @@
                 @endforeach
                 </tbody>
             </table>
+=======
+        <div class="about revealator-fade revealator-once revealator-duration15">
+        @foreach($course as $item)
+            <img src="{{$item->image}}">
+           
+            <div class="about-text ">
+                <h2>{{$item->title}}</h2>
+                <p>{{$item->descr}}
+                </p>
+                <p>Стоимость пакета</p>
+                <p style="margin-bottom: 50px;" class="price">{{$item->price}}</p>
+                <a href="" class="custom-button form-open">Выбрать</a>
+            </div>
+            @endforeach
+       
+        <div class="social">
+            <a><img src="images/Group тг.png"></a>
+            <a><img src="images/Group почта.png"></a>
+            <a><img src="images/Group ю туб.png"></a>
+>>>>>>> Stashed changes
         </div>
     </div>
 @endsection

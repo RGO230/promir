@@ -9,6 +9,7 @@ class Course extends Model
 {
     protected $fillable = ['title','descr','video','image','price'];
     use HasFactory;
+<<<<<<< Updated upstream
 
     public function users(){
         return $this->hasManyThrough(
@@ -22,4 +23,9 @@ class Course extends Model
     // public function users(){
     //     return $this->belongsToMany(User::class);
     // }
+=======
+    public function subCourses(){
+        $this->hasMany('courses');
+    }
+>>>>>>> Stashed changes
 }

@@ -196,6 +196,7 @@
                 "source": "https://github.com/dflydev/dflydev-dot-access-data/tree/v3.0.2"
             },
             "time": "2022-10-27T11:44:00+00:00"
+<<<<<<< Updated upstream
         },
         {
             "name": "doctrine/cache",
@@ -535,6 +536,8 @@
                 }
             ],
             "time": "2022-10-12T20:51:15+00:00"
+=======
+>>>>>>> Stashed changes
         },
         {
             "name": "doctrine/inflector",
@@ -1303,6 +1306,7 @@
                 }
             ],
             "time": "2022-10-26T14:07:24+00:00"
+<<<<<<< Updated upstream
         },
         {
             "name": "kenvel/laravel-tinkoff",
@@ -1351,6 +1355,8 @@
                 "source": "https://github.com/kenvel/laravel-tinkoff/tree/master"
             },
             "time": "2022-04-20T11:39:58+00:00"
+=======
+>>>>>>> Stashed changes
         },
         {
             "name": "laravel/framework",
@@ -2929,6 +2935,7 @@
                     "url": "https://github.com/GrahamCampbell",
                     "type": "github"
                 },
+<<<<<<< Updated upstream
                 {
                     "url": "https://tidelift.com/funding/github/packagist/phpoption/phpoption",
                     "type": "tidelift"
@@ -2969,6 +2976,8 @@
                 "MIT"
             ],
             "authors": [
+=======
+>>>>>>> Stashed changes
                 {
                     "name": "PHP-FIG",
                     "homepage": "http://www.php-fig.org/"
@@ -3419,6 +3428,7 @@
                 "source": "https://github.com/bobthecow/psysh/tree/v0.11.9"
             },
             "time": "2022-11-06T15:29:46+00:00"
+<<<<<<< Updated upstream
         },
         {
             "name": "pusher/pusher-php-server",
@@ -3480,6 +3490,8 @@
                 "source": "https://github.com/pusher/pusher-http-php/tree/7.2.1"
             },
             "time": "2022-10-17T08:33:16+00:00"
+=======
+>>>>>>> Stashed changes
         },
         {
             "name": "ralouphie/getallheaders",
@@ -5064,6 +5076,7 @@
             "support": {
                 "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.27.0"
             },
+<<<<<<< Updated upstream
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -5132,6 +5145,8 @@
             "support": {
                 "source": "https://github.com/symfony/polyfill-php56/tree/v1.20.0"
             },
+=======
+>>>>>>> Stashed changes
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -5146,7 +5161,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< Updated upstream
             "time": "2020-10-23T14:02:19+00:00"
+=======
+            "time": "2022-11-03T14:55:06+00:00"
+>>>>>>> Stashed changes
         },
         {
             "name": "symfony/polyfill-php72",
@@ -6102,6 +6121,7 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/2.2.5"
             },
             "time": "2022-09-12T13:28:28+00:00"
+<<<<<<< Updated upstream
         },
         {
             "name": "tymon/jwt-auth",
@@ -6186,6 +6206,8 @@
                 }
             ],
             "time": "2020-11-27T12:32:42+00:00"
+=======
+>>>>>>> Stashed changes
         },
         {
             "name": "vlucas/phpdotenv",
