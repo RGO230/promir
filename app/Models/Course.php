@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
-    protected $fillable = ['title','descr','video','image','price'];
+    protected $fillable = ['title','descr','video','image','price','category','course_id'];
     use HasFactory;
-<<<<<<< Updated upstream
+    public const CATEGORIES= ['Ретрит','Абонемент в женский клуб','Медитация','Блоки','Милые завтраки','Курсы','Личная консультация'];
 
     public function users(){
         return $this->hasManyThrough(
@@ -23,9 +23,7 @@ class Course extends Model
     // public function users(){
     //     return $this->belongsToMany(User::class);
     // }
-=======
     public function subCourses(){
-        $this->hasMany('courses');
+       return $this->hasMany(Course::class);
     }
->>>>>>> Stashed changes
 }
