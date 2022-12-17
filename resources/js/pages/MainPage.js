@@ -8,10 +8,10 @@ import FiveBanner from "../components/FiveBanner";
 import MyHeader from "../components/MyHeader";
 import MyFooter from "../components/MyFooter";
 
-
+import Pusher from 'pusher-js';
 
 const MainPage = () => {
-
+    
 
     return (
         <div>

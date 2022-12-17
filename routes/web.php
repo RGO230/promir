@@ -15,10 +15,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/');
-Route::get('/', function () {
-    return view('course.course');
-});
 
 Auth::routes();
 Route::middleware(['auth'])->group(function(){

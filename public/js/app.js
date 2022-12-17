@@ -11372,6 +11372,8 @@ try {
   __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
 } catch (e) {}
 
+// Enable pusher logging - don't include this in production
+
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
@@ -11423,38 +11425,14 @@ var ChatStream = function ChatStream() {
     var pusher = new (pusher_js__WEBPACK_IMPORTED_MODULE_1___default())('4db31c7b4cddbe1cc61f', {
       cluster: 'eu'
     });
-    var channel = pusher.subscribe('chat-');
-    channel.bind('App\\Events\\MessageSend', function (data) {
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function (data) {
       alert(JSON.stringify(data));
     });
   };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     connectToSocket();
   }, []);
-  var handleEve = function handleEve(e) {
-    e.preventDefault();
-    var msg = 'jkjkjkjkj';
-    var activeUserId = '3';
-    fetch('http://127.0.0.1:8000/messages?message=' + msg + '&id=' + activeUserId, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'mode': 'no-cors',
-        'Access-Control-Allow-Origin': '*',
-        'Accept': 'application/json'
-      }
-      //body:JSON.stringify(data)
-    }).then(function (response) {
-      return response.json();
-    }).then(function (dat) {
-      console.log('from handleve : ' + JSON.stringify(dat));
-    })["catch"](function (error) {
-      console.error(error);
-    });
-
-    //this.subscribeToPusher();
-  };
-
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("section", {
     className: "chatbox",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("section", {
@@ -11616,7 +11594,6 @@ var ChatStream = function ChatStream() {
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
       className: "chat-input",
-      onSubmit: handleEve,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
         type: "text",
         autoComplete: "on",
@@ -12200,7 +12177,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_FiveBanner__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/FiveBanner */ "./resources/js/components/FiveBanner.js");
 /* harmony import */ var _components_MyHeader__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/MyHeader */ "./resources/js/components/MyHeader.js");
 /* harmony import */ var _components_MyFooter__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/MyFooter */ "./resources/js/components/MyFooter.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var pusher_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
+/* harmony import */ var pusher_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(pusher_js__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -12213,21 +12193,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var MainPage = function MainPage() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_MyHeader__WEBPACK_IMPORTED_MODULE_7__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_ap_cx_react_fullpage__WEBPACK_IMPORTED_MODULE_1__.Fullpage, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_MyHeader__WEBPACK_IMPORTED_MODULE_7__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(_ap_cx_react_fullpage__WEBPACK_IMPORTED_MODULE_1__.Fullpage, {
       transitionTiming: 1500,
-      children: [window.innerWidth >= 860 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_ap_cx_react_fullpage__WEBPACK_IMPORTED_MODULE_1__.FullpageNavigation, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_ap_cx_react_fullpage__WEBPACK_IMPORTED_MODULE_1__.FullPageSections, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_ap_cx_react_fullpage__WEBPACK_IMPORTED_MODULE_1__.FullpageSection, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_FirstBanner__WEBPACK_IMPORTED_MODULE_2__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_ap_cx_react_fullpage__WEBPACK_IMPORTED_MODULE_1__.FullpageSection, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_SecondBanner__WEBPACK_IMPORTED_MODULE_3__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_ap_cx_react_fullpage__WEBPACK_IMPORTED_MODULE_1__.FullpageSection, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_FourthBanner__WEBPACK_IMPORTED_MODULE_5__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_ap_cx_react_fullpage__WEBPACK_IMPORTED_MODULE_1__.FullpageSection, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_FiveBanner__WEBPACK_IMPORTED_MODULE_6__["default"], {})
+      children: [window.innerWidth >= 860 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_ap_cx_react_fullpage__WEBPACK_IMPORTED_MODULE_1__.FullpageNavigation, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(_ap_cx_react_fullpage__WEBPACK_IMPORTED_MODULE_1__.FullPageSections, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_ap_cx_react_fullpage__WEBPACK_IMPORTED_MODULE_1__.FullpageSection, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_FirstBanner__WEBPACK_IMPORTED_MODULE_2__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_ap_cx_react_fullpage__WEBPACK_IMPORTED_MODULE_1__.FullpageSection, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_SecondBanner__WEBPACK_IMPORTED_MODULE_3__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_ap_cx_react_fullpage__WEBPACK_IMPORTED_MODULE_1__.FullpageSection, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_FourthBanner__WEBPACK_IMPORTED_MODULE_5__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_ap_cx_react_fullpage__WEBPACK_IMPORTED_MODULE_1__.FullpageSection, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_FiveBanner__WEBPACK_IMPORTED_MODULE_6__["default"], {})
         })]
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_MyFooter__WEBPACK_IMPORTED_MODULE_8__["default"], {})]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_MyFooter__WEBPACK_IMPORTED_MODULE_8__["default"], {})]
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MainPage);
