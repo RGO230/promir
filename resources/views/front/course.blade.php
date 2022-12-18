@@ -38,7 +38,13 @@
             </div>
         </div>
         <img style="top: 0; right:0" class="ellipse" src="images/Ellipse 1.png" width="700">
+
+
+        
+
+
         @foreach ($courses as $course)
+    
             <div class="about revealator-fade revealator-once revealator-duration15">
 
                 <img src="{{ $course->image }}">
@@ -57,7 +63,26 @@
                     @endif
                 </div>
             </div>
+
+            
+
+         <!-- <div style="margin-top: 100px;" class="consult revealator-fade">
+            <div class="consult-text" style="width:100%">
+                <div class="consult-text-item">
+                    <div class="number-wrap">
+                        <span class="number">1</span>
+                        <div>
+                            <p>Курс «Мои возможности» </p>
+                            <p class="price">2000 ₽</p>
+                        </div>
+                    </div>
+                    <a class="custom-button form-open course-button">Выбрать</a>
+                </div>
+            </div>
+        </div>  -->
         @endforeach
+
+
         {{-- <div style="margin-top: 100px;" class="consult revealator-fade">
             <div class="consult-text" style="width:100%">
                 <div class="consult-text-item">
@@ -112,6 +137,8 @@
                 </div>
             </div>
         </div> --}}
+
+        
         <div class="social" id="contact">
             <a href="https://t.me/milasoullove"><img src="images/Group тг.png"></a>
             <a href="mailto:Milarmony@gmail.com"><img src="images/Group почта.png"></a>
@@ -162,7 +189,47 @@
         </form>
     </div>
     <script>
+
+        function getAllCoursesWithSubcourses(){
+            $.ajax({
+                    type: "GET",
+                    url: '/subcourse',
+                    success: function(resp) {
+                        resp.each(item=>{
+                            $('#courses-holder')
+                        .append(
+                        `<div class="about revealator-fade revealator-once revealator-duration15">
+
+                                <img src="${image}">
+
+                                <div class="about-text ">
+                                    <h2>${title}</h2>
+                                    <p>${descr}</p>
+                                    <p>Стоимость пакета:</p>
+                                    <p style="margin-bottom: 50px;" class="price">${price} ₽/ МЕС</p>
+                                    @if (Auth::user())
+                                    <a href="" class="custom-button form-open course-button"
+                                        data-id="${id}">Выбрать</a>
+                                    @else
+                                    <a href="/login" class="custom-button">Выбрать</a> 
+                                    @endif
+                                </div>
+                                </div>`
+                        )
+                        })
+                        
+                       
+                    
+                    },
+                    error: function() {
+                        alert('На сайте произошла ошибка');
+                    }
+                });
+        }
+
         $(document).ready(function() {
+
+           
             
             $('.course-button').on('click', function() {
                 var course_id = $(this).data('id');

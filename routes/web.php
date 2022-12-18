@@ -22,8 +22,9 @@ Route::get('/', function () {
 Route::get('/service', function () {
     return view('front.service');
 });
-Route::get('/subcourse',[App\Http\Controllers\PayController::class,'getCoursesWithSubCourses']);
-Route::get('/courses','CourseController@frontIndex');
+ Route::get('/subcourse',[App\Http\Controllers\PayController::class,'getCoursesWithSubCourses']);
+ Route::get('/courses','CourseController@frontIndex');
+
 
 Route::post('initpay','PayController@init');
 
