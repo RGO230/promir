@@ -78,7 +78,8 @@ class PayController extends Controller
     }
 public function getCoursesWithSubCourses(){
     $subcourse= Course::with('subCourses')->get();
-    return view('front.course') -> with('subcourse',$subcourse);
+    return view('front.courses') -> with('subcourses',$subcourse);
+    
 }
 
 

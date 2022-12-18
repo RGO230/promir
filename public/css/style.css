@@ -3,6 +3,7 @@ body {
     font-family: 'SVN-Gilroy', sans-serif;
     margin: 0;
     padding: 0;
+
 }
 
 button {
@@ -24,7 +25,7 @@ a {
 
 .wrap {
     background-image: url(../images/noise.png);
-    min-width: 100vw;
+    min-width: 100%;
     min-height: 100vh;
     background-repeat: repeat;
     display: flex;
@@ -403,7 +404,10 @@ input {
 .modal input {
     margin-top: 10px;
     width: 100%;
+    outline: none;
+
 }
+
 .modal button {
     margin-top: 25px;
     width: 100%;
@@ -422,6 +426,10 @@ input {
     height: 100px;
     border-radius: 50%;
     background-size: cover;
+}
+
+.t-close-frame-desktop{
+    background-repeat: no-repeat !important;
 }
 
 @media screen and (max-width: 1200px) {

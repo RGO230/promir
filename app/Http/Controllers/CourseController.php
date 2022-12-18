@@ -29,7 +29,7 @@ class CourseController extends Controller
     public function frontIndex()
     {
         return view('front.course', [
-            'courses' => Course::all()
+            'courses' => Course::where('course_id',null)->with('subCourses')->get()->toArray()
         ]);
     }
 

@@ -3,8 +3,12 @@ body {
     font-family: 'SVN-Gilroy', sans-serif;
     margin: 0;
     padding: 0;
-}
+    overflow-x: hidden;
 
+}
+html{
+    overflow-x: hidden;
+}
 button {
     border: none;
 }
@@ -24,7 +28,7 @@ a {
 
 .wrap {
     background-image: url(../images/noise.png);
-    min-width: 100vw;
+    min-width: 100%;
     min-height: 100vh;
     background-repeat: repeat;
     display: flex;
@@ -398,6 +402,8 @@ input {
 .modal input {
     margin-top: 10px;
     width: 100%;
+    outline: none;
+    background: rgba(0, 0, 0, 0);
 }
 .modal button {
     margin-top: 25px;
