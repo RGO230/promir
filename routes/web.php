@@ -43,3 +43,4 @@ Route::middleware(['auth'])->group(function(){
     });
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'],function(){})->name('home');
 });
+Route::get('/test',[App\Http\Controllers\PayController::class,'test']);

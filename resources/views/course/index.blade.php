@@ -11,9 +11,12 @@
                 <tr>
                     <th>Название</th>
                     <th>Описание</th>
+                    <th>Описание пользователя</th>
                     <th>Фотография</th>
                     <th>Видео</th>
                     <th>Цена</th>
+                    <th>Подкурсы</th>
+                    <th>Категория</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -22,6 +25,7 @@
                     <tr>
                         <td>{{ $item->title }}</td>
                         <td>{{ $item->descr }}</td>
+                        <td>{{ $item->userdescr }}</td>
                         <td><img width="100" src="{{$item->image}}"></td>
                         <td>{{$item->video}}</td>
                         <td style="text-align:right;">
@@ -29,6 +33,8 @@
                             <a href="/course/{{ $item->id }}/destroy" class="btn btn-danger">Удалить</a>
                         </td>
                         <td>{{$item->price}}</td>
+                        <td>{{$item->course_id}}</td>
+                        <td>{{$item->category}}</td>
                     </tr>
                 @endforeach
                 </tbody>

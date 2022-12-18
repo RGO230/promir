@@ -36,7 +36,12 @@ class CourseController extends Controller
 
     public function create()
     {
-        return view('course.create');
+        $course = Course::where('course_id',null)->get();
+        $category = Course::CATEGORIES;
+        return view('course.create', [
+            'course' => $course,
+            'category'=>$category,
+        ]);
     }
     /**
      * Store a newly created resource in storage.
@@ -50,8 +55,11 @@ class CourseController extends Controller
             "title" => "string|required",
             "descr" => "string|required",
             "video" => "string|required",
-            "file" => "file|required",
-            "price"=>"int|required"
+            "file" => "file",
+            "price"=>"integer|required",
+            "course_id"=>"integer|nullable",
+            "category" => "string|required",
+            "userdescr"=>"string"
         ]);
 
         $path = '';
@@ -70,6 +78,9 @@ class CourseController extends Controller
         $course->image = $path;
         $course->video = $request->video;
         $course->price = $request->price;
+        $course->course_id = $request->course_id;
+        $course->category=$request->category;
+        $course->userdescr=$request->userdescr;
         $course->save();
 
         return redirect()->route('course.index');
@@ -94,8 +105,11 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        return view('course.edit', [
-            'course' => $course
+        $course = Course::where('course_id',null)->get();
+        $category = Course::CATEGORIES;
+        return view('course.create', [
+            'course' => $course,
+            'category'=>$category,
         ]);
     }
 
@@ -113,7 +127,10 @@ class CourseController extends Controller
             "descr" => "string|required",
             "video" => "string|required",
             "file" => "file",
-            "price"=>"int|required"
+            "price"=>"int|required",
+            "category" => "string|required",
+            "course_id"=>"integer|nullable",
+            "userdescr"=>'string'
         ]);
 
         $path = $course->image;
@@ -131,7 +148,10 @@ class CourseController extends Controller
             "descr" => $request->descr,
             "video" => $request->video,
             "image" => $path,
-            "price" =>$request->price
+            "price" =>$request->price,
+            "course_id"=>$request->course_id,
+            'category'=>$request->category,
+            'userdescr'=>$request->userdescr
         ]);
 
         return redirect()->route('course.index');
@@ -157,4 +177,5 @@ class CourseController extends Controller
         })->get();
         return view('lk.index') -> with('course',$course);
     }
+    
 }
