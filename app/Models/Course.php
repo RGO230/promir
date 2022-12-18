@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
-    protected $fillable = ['title','descr','video','image','price','category','course_id'];
+    protected $fillable = ['title','descr','video','image','price','category','course_id','userdescr'];
     use HasFactory;
     public const CATEGORIES= ['Ретрит','Абонемент в женский клуб','Медитация','Блоки','Милые завтраки','Курсы','Личная консультация'];
 

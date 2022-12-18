@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('content')
 
+<style>
+    .tox-notifications-container{
+        display: none;
+    }
+
+</style>
 <script src="https://cdn.tiny.cloud/1/b7wcs9ngmi9gl6v19rjlj6oqdxcyp327pmshcv13won23un5/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
 <div class="container">
