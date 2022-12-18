@@ -88,7 +88,7 @@
                             <p class="price">2000 ₽</p>
                         </div>
                     </div>
-                    <a class="custom-button form-open course-button"">Выбрать</a>
+                    <a class="custom-button form-open course-button">Выбрать</a>
                 </div>
                 <div class="consult-text-item">
                     <div class="number-wrap">
@@ -163,6 +163,7 @@
     </div>
     <script>
         $(document).ready(function() {
+            
             $('.course-button').on('click', function() {
                 var course_id = $(this).data('id');
                 $.ajax({
@@ -173,6 +174,7 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     success: function(resp) {
+                       
                         $('body .orderId').val(resp.order_id);
                         $('body .priceOrder').val(resp.price);
                     },
@@ -184,6 +186,7 @@
         });
     </script>
     <script>
+    
         $(document).ready(function() {
             $('body .form-open').on('click', function(event) {
                 event.preventDefault();
