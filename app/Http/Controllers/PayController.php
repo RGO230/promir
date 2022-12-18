@@ -76,7 +76,10 @@ class PayController extends Controller
         }
         return response()->json("Pay Error");
     }
-
+public function getCoursesWithSubCourses(){
+    $course= Course::with('subCourses')->get();
+    return $course;
+}
 
 
     } 
