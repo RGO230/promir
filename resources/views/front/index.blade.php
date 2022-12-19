@@ -106,7 +106,7 @@
         </div>
 
         <div class="revealator-fade line-2"
-            style="align-self: flex-end; display: flex; align-items: center; position: relative;">
+            style="align-self: flex-end; display: flex; align-items: center; position: relative; overflow-x:hidden;">
             <form class="tg-form">
                 <a target="_blank" href="https://t.me/milarmony"><button class="custom-button">Подписаться</button></a>
             </form>
