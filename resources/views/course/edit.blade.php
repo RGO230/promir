@@ -60,8 +60,8 @@
 
                         <div class="col-md-6">
                         <select class="form-control" id="catcat" name="category">
-                                @foreach($categories as $category)
-                                <option value="{{$category}}">{{$category}}</option>
+                        @foreach($category as $item)
+                                <option value="{{$item}}">{{$item}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -75,8 +75,8 @@
                         <div class="col-md-4">
                             <select class="form-control" id="subcourse" name="course_id">
                                 <option value=""></option>
-                                @foreach($course as $item)
-                                <option value="{{$item->course_id}}">{{$item->title}}</option>
+                                @foreach($subcourse as $item)
+                                <option value="{{$item->id}}">{{$item->title}}</option>
                                 @endforeach
                             </select>
                         </div>

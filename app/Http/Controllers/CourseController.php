@@ -103,13 +103,15 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function edit(Course $course)
+    public function edit($id)
     {
-        $course = Course::where('course_id',null)->get();
+        $course = Course::find($id);
+        $subcourse= Course::where('course_id',null)->get();
         $category = Course::CATEGORIES;
-        return view('course.create', [
+        return view('course.edit', [
             'course' => $course,
             'category'=>$category,
+            'subcourse'=>$subcourse
         ]);
     }
 

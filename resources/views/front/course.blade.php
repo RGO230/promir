@@ -33,7 +33,7 @@
             <div class="menu">
                 <a href="/">Главная</a>
                 <a href="/service">Услуги</a>
-                <a style="border-bottom: 1px solid black" href="cource.html">Курсы</a>
+                <a style="border-bottom: 1px solid black" href="/courses">Курсы</a>
                 <a href="#contact">Контакты</a>
             </div>
         </div>
@@ -47,9 +47,10 @@
 
         
             <!-- Провека на категорию. Если не курсы - не выводим -->
-            @if ($course != 'Курсы')
+            @if ($course == 'Курсы')
                 <?php print_r($course); 
-                break; ?>
+                break;
+                 ?>
             @endif
         
     

@@ -46,9 +46,12 @@
        
 
         @foreach ($courses as  $course)
-        @if ($course == 'Курсы')
-        {{print_r($course)}}
-        @endif
+        
+        @if ($course['category'] == 'Курсы')
+        <?php print_r($course); 
+                 ?>
+            @endif
+        
         @endforeach
 
         <div class="about revealator-fade revealator-once revealator-duration15">
