@@ -39,6 +39,18 @@
                 <a href="#contact">Контакты</a>
             </div>
         </div>
+
+
+       
+
+       
+
+        @foreach ($courses as  $course)
+        @if ($course == 'Курсы')
+        {{print_r($course)}}
+        @endif
+        @endforeach
+
         <div class="about revealator-fade revealator-once revealator-duration15">
             <img class="ellipse" src="images/Ellipse 2.png" style="left: 0; width: 200px;">
 

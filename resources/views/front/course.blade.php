@@ -45,9 +45,11 @@
 
         @foreach ($courses as  $course)
 
+        
             <!-- Провека на категорию. Если не курсы - не выводим -->
             @if ($course != 'Курсы')
-                <?php break; ?>
+                <?php print_r($course); 
+                break; ?>
             @endif
         
     
