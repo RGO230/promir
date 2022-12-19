@@ -15,13 +15,10 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('front.index');
-});
+Route::get('/', 'HomeController@frontIndex');
 
-Route::get('/service', function () {
-    return view('front.service');
-});
+Route::get('/service', 'HomeController@service');
+
  Route::get('/subcourse',[App\Http\Controllers\PayController::class,'getCoursesWithSubCourses']);
  Route::get('/courses','CourseController@frontIndex');
 

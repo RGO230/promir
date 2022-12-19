@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,5 +25,20 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function frontIndex()
+    {
+        return view('front.index', [
+            'courses' => Course::where('course_id',null)->with('subCourses')->get()->toArray()
+        ]);
+    }
+
+
+    public function service()
+    {
+        return view('front.service', [
+            'courses' => Course::where('course_id',null)->with('subCourses')->get()->toArray()
+        ]);
     }
 }
