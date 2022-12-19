@@ -59,7 +59,9 @@ class CourseController extends Controller
             "price"=>"integer|required",
             "course_id"=>"integer|nullable",
             "category" => "string|required",
-            "userdescr"=>"string"
+            "userdescr"=>"string",
+            'pricetext'=>'string',
+            'sessioncount'=>'int'
         ]);
 
         $path = '';
@@ -81,6 +83,8 @@ class CourseController extends Controller
         $course->course_id = $request->course_id;
         $course->category=$request->category;
         $course->userdescr=$request->userdescr;
+        $course->pricetext=$request->pricetext;
+        $course->sessioncount=$request->sessioncount;
         $course->save();
 
         return redirect()->route('course.index');
@@ -103,13 +107,14 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function edit(Course $course)
-    {
-        $course = Course::where('course_id',null)->get();
+    public function edit($id)
+    {   $course = Course::find($id);
+        $subcourse = Course::where('course_id',null)->get();
         $category = Course::CATEGORIES;
-        return view('course.create', [
+        return view('course.edit', [
             'course' => $course,
             'category'=>$category,
+            'subcourse'=>$subcourse
         ]);
     }
 
@@ -130,7 +135,9 @@ class CourseController extends Controller
             "price"=>"int|required",
             "category" => "string|required",
             "course_id"=>"integer|nullable",
-            "userdescr"=>'string'
+            "userdescr"=>'string',
+            'pricetext'=>'string',
+            'sessioncount'=>'int'
         ]);
 
         $path = $course->image;
@@ -151,7 +158,9 @@ class CourseController extends Controller
             "price" =>$request->price,
             "course_id"=>$request->course_id,
             'category'=>$request->category,
-            'userdescr'=>$request->userdescr
+            'userdescr'=>$request->userdescr,
+            'pricetext'=>$request->pricetext,
+            'sessioncount'=>$request->sessioncount
         ]);
 
         return redirect()->route('course.index');

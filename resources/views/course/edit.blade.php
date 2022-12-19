@@ -56,12 +56,26 @@
                         </div>
                     </div>
                     <div class="row mb-3">
+                        <label  class="col-md-4 col-form-label text-md-end">{{ __('Текст цены') }}</label>
+
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" value="{{$course->pricetext}}" name="pricetext" required autofocus>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label  class="col-md-4 col-form-label text-md-end">{{ __('Количество сеансов') }}</label>
+
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" value="{{$course->sessioncount}}" name="sessioncount" required autofocus>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
                         <label  class="col-md-4 col-form-label text-md-end">{{ __('Категория') }}</label>
 
                         <div class="col-md-6">
                         <select class="form-control" id="catcat" name="category">
-                                @foreach($categories as $category)
-                                <option value="{{$category}}">{{$category}}</option>
+                        @foreach($category as $item)
+                                <option value="{{$item}}">{{$item}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -72,11 +86,11 @@
                         <label class="col-md-4 col-form-label text-md-end">{{ __('Подкурс') }}</label>
                         
 
-                        <div class="col-md-4">
+                      <div class="col-md-4">
                             <select class="form-control" id="subcourse" name="course_id">
                                 <option value=""></option>
-                                @foreach($course as $item)
-                                <option value="{{$item->course_id}}">{{$item->title}}</option>
+                                @foreach($subcourse as $item)
+                                <option value="{{$item->id}}">{{$item->title}}</option>
                                 @endforeach
                             </select>
                         </div>

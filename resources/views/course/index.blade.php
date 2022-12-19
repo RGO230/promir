@@ -33,8 +33,11 @@
                             <a href="/course/{{ $item->id }}/destroy" class="btn btn-danger">Удалить</a>
                         </td>
                         <td>{{$item->price}}</td>
+                        <td>{{$item->pricetext}}</td>
+                        <td>{{$item->sessioncount}}</td>
                         <td>{{$item->course_id}}</td>
                         <td>{{$item->category}}</td>
+                      
                     </tr>
                 @endforeach
                 </tbody>
