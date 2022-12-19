@@ -48,12 +48,26 @@
                             <input type="text" class="form-control" name="video" required autofocus>
                         </div>
                     </div>
-
                     <div class="row mb-3">
                         <label  class="col-md-4 col-form-label text-md-end">{{ __('Цена') }}</label>
 
                         <div class="col-md-6">
                             <input type="text" class="form-control" name="price" required autofocus>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label  class="col-md-4 col-form-label text-md-end">{{ __('Текст цены') }}</label>
+
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="pricetext" required autofocus>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label  class="col-md-4 col-form-label text-md-end">{{ __('Количество сеансов') }}</label>
+
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="sessioncount" required autofocus>
                         </div>
                     </div>
 
