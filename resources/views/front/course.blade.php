@@ -57,8 +57,7 @@
 
                 <div class="about-text ">
                     <h2>{{ $course['title'] }}</h2>
-                    <p>{!! $course['descr'] !!}
-                    </p>
+                    <p>{!! $course['descr'] !!}</p>
                     <p>Стоимость пакета:</p>
                     <p style="margin-bottom: 50px;" class="price">{{ $course['price'] }} ₽/ МЕС</p>
                     @if (Auth::user())

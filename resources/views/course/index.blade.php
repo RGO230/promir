@@ -17,7 +17,10 @@
                     <th>Цена</th>
                     <th>Подкурсы</th>
                     <th>Категория</th>
-                    <th></th>
+                    <th>Текст цены</th>
+                    <th>Количество сеансов</th>
+                    <th>Действия</th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -28,15 +31,19 @@
                         <td>{{ $item->userdescr }}</td>
                         <td><img width="100" src="{{$item->image}}"></td>
                         <td>{{$item->video}}</td>
+                        
+                        <td>{{$item->price}}</td>
+                        
+                        
+                        <td>{{$item->course_id}}</td>
+                        <td>{{$item->category}}</td>
+
+                        <td>{{$item->pricetext}}</td>
+                        <td>{{$item->sessioncount}}</td>
                         <td style="text-align:right;">
                             <a href="/course/{{ $item->id }}/edit" class="btn btn-primary">Редактировать</a>
                             <a href="/course/{{ $item->id }}/destroy" class="btn btn-danger">Удалить</a>
                         </td>
-                        <td>{{$item->price}}</td>
-                        <td>{{$item->pricetext}}</td>
-                        <td>{{$item->sessioncount}}</td>
-                        <td>{{$item->course_id}}</td>
-                        <td>{{$item->category}}</td>
                       
                     </tr>
                 @endforeach

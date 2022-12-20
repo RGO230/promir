@@ -47,14 +47,65 @@
 
         @foreach ($courses as  $course)
         
-        @if ($course['category'] == 'Курсы')
-        <?php print_r($course); 
-                 ?>
+        @if ($course['category'] != 'Курсы' && $course['category'] != 'Блоки')
+        
+        
+        <div class="about revealator-fade revealator-once revealator-duration15">
+            <img class="ellipse" src="images/Ellipse 2.png" style="left: 0; width: 200px;">
+
+            <img src="{{ $course['image'] }}">
+
+            <div class="about-text ">
+                   <h2>{{ $course['title'] }}</h2>
+                    <p>{!! $course['descr'] !!}</p>
+                
+                <p>Стоимость:</p>
+                <p style="margin-bottom: 50px;" class="price">{{ $course['price'] }} ₽ / {{ $course['pricetext'] }}</p>
+                <!-- <p style="margin-bottom: 50px;" class="price">5000 ₽/ 3 МЕС</p> -->
+                @if (Auth::user())
+                <a  style="padding: 20px 50px" class="custom-button form-open course-button"  data-id="{{ $course['id'] }}">Выбрать</a>
+                @else
+                <a  style="padding: 20px 50px" class="custom-button form-open" href="/login">Выбрать</a>
+                @endif
+            </div>
+        </div>
             @endif
+            
+
+            
         
         @endforeach
 
-        <div class="about revealator-fade revealator-once revealator-duration15">
+        <div class="prices" style="position: relative;">
+            <img src="images/Ellipse 5.png" style="z-index:-1;position:absolute; left:0; width: 150px; top: -300px">
+            <img src="images/Ellipse 6.png" style="z-index:-1;position:absolute; left:0; width: 50px; top: -100px">
+        @foreach ($courses as  $course)
+        
+        @if ($course['category'] == 'Блоки')
+        
+            <div class="prices-item">
+                <span>{{ $course['title'] }}</span>
+                <img src="images/Line 21.png">
+                <span class="price">{{ $course['price'] }} ₽ / {{ $course['pricetext'] }}</span>
+                <p>{!! $course['descr'] !!}
+                    </p>
+                    @if (Auth::user())
+                <a  style="padding: 20px 50px" class="custom-button form-open course-button"  data-id="{{ $course['id'] }}">Выбрать</a>
+                @else
+                <a  style="padding: 20px 50px" class="custom-button form-open" href="/login">Выбрать</a>
+                @endif
+
+            </div>
+        
+
+        
+        
+        @endif
+        
+        @endforeach
+        </div>
+
+        <!-- <div class="about revealator-fade revealator-once revealator-duration15">
             <img class="ellipse" src="images/Ellipse 2.png" style="left: 0; width: 200px;">
 
             <img src="images/фото+контур (1).png">
@@ -81,8 +132,8 @@
                 <p style="margin-bottom: 50px;" class="price">5000 ₽/ 3 МЕС</p>
                 <a href="" style="padding: 20px 50px" class="custom-button form-open">Выбрать</a>
             </div>
-        </div>
-        <div class="about revealator-fade revealator-once revealator-duration15" style="z-index: 4;">
+        </div> -->
+        <!-- <div class="about revealator-fade revealator-once revealator-duration15" style="z-index: 4;">
             <div class="about-text ">
                 <h2>медитации</h2>
                 <p style="margin-bottom: 50px;">
@@ -101,15 +152,17 @@
                     <li>Для тех, кто готов проработать вопросы и расти</li>
                 </ul>
                 </p>
-                <p style="margin-bottom: 50px;" class="price">2200 ₽ / 4 занятия</p>
+                <p style="margin-bottom: 50px;" class="price">{{ $course['price'] }} ₽ / 4 занятия</p>
                 <p style="margin-bottom: 50px;" class="price">4200 ₽ / 8 занятий</p>
-                <a href="" class="custom-button form-open">Купить пакет медитаций</a>
+                <a href="" class="custom-button form-open">Выбрать</a>
             </div>
             <img src="images/фото+контур (4).png">
-        </div>
+        </div> -->
+       
 
 
-        <div class="prices" style="position: relative;">
+
+        <!-- <div class="prices" style="position: relative;">
             <img src="images/Ellipse 5.png" style="z-index:-1;position:absolute; left:0; width: 150px; top: -300px">
             <img src="images/Ellipse 6.png" style="z-index:-1;position:absolute; left:0; width: 50px; top: -100px">
             <div class="prices-item">
@@ -142,9 +195,9 @@
                 <a href="" class="custom-button form-open">Выбрать</a>
 
             </div>
-        </div>
+        </div> -->
 
-        <div style="position: relative;width: 100%;">
+        <!-- <div style="position: relative;width: 100%;">
             <img class="ellipse" src="images/Ellipse 4.png" style="right: 0; width: 400px;">
         </div>
         <div class="about revealator-fade revealator-once revealator-duration15" style="position: relative;">
@@ -167,11 +220,11 @@
                 <p style="margin-bottom: 50px;" class="price">от 30 000 ₽/ МЕС</p>
                 <a href="https://t.me/milasoullove" class="custom-button">Узнать  подробности</a>
             </div>
-        </div>
+        </div> -->
 
 
 
-        <div class="about revealator-fade revealator-once revealator-duration15">
+        <!-- <div class="about revealator-fade revealator-once revealator-duration15">
             <div class="about-text ">
                 <h2>Милые завтраки</h2>
                 <p style="margin-bottom: 50px;">
@@ -186,7 +239,7 @@
                 <a href="https://t.me/milasoullove" class="custom-button">Узнать  подробности</a>
             </div>
             <img src="images/фото с милых завтраков.png">
-        </div>
+        </div> -->
         <div class="social" id="contact">
             <a href="https://t.me/milasoullove"><img src="images/Group тг.png"></a>
             <a href="mailto:Milarmony@gmail.com"><img src="images/Group почта.png"></a>
@@ -214,26 +267,62 @@
     <div class="form">
     </div>
     <div class="modal">
-        <p class="modal-title">Заявка</p>
-        <form class="modal-form">
+        <p>Заявка</p>
+        <script src="https://securepay.tinkoff.ru/html/payForm/js/tinkoff_v2.js"></script>
+        <form class="modal-form" name="TinkoffPayForm" onsubmit="pay(this); return false;">
+            <input class="tinkoffPayRow" type="hidden" name="terminalkey" value="1668606448036DEMO">
+            <input class="tinkoffPayRow" type="hidden" name="frame" value="true">
+            <input class="tinkoffPayRow" type="hidden" name="language" value="ru">
+            <input class="tinkoffPayRow priceOrder" type="hidden" placeholder="Сумма заказа" name="amount" required>
+            <input class="tinkoffPayRow orderId" type="hidden" placeholder="Номер заказа" name="order">
             <p>Ваше имя
-                <input type="text" placeholder="Введите имя">
+            <input class="tinkoffPayRow" type="text" placeholder="Введите имя" name="name">
             </p>
-
             <p>Email
-                <input type="text" placeholder="Введите email">
+            <input class="tinkoffPayRow" type="text" placeholder="Введите email" name="email">
             </p>
-
             <p>Номер телефона
-                <input type="text" placeholder="+7 (123) 456-78-91">
+            <input class="tinkoffPayRow" type="text" placeholder="+7 (123) 456-78-91" name="phone">
             </p>
-
-            <button class="custom-button" type="submit">Перейти к оплате</button>
+            <input id="tinkoffpay-button" style="border: none" class="tinkoffPayRow custom-button"  type="submit" value="Оплатить" disabled>
         </form>
     </div>
 
 
     <script>
+         $(document).ready(function() {
+
+           
+            
+$('.course-button').on('click', function() {
+   
+   
+    var course_id = $(this).attr("data-id");
+    console.log(course_id)
+    $.ajax({
+        type: "POST",
+        url: '/initpay',
+        data: {                        
+            'id': course_id,
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+
+        },
+        success: function(resp) {
+
+            $('body .orderId').val(resp.order_id);
+            $('body .priceOrder').val(resp.price);
+
+            $('#tinkoffpay-button').removeAttr('disabled');
+        },
+        error: function(err) {
+            console.log(err)
+            $('#tinkoffpay-button').attr('disabled', 'disabled');
+            alert('На сайте произошла ошибка');
+        }
+    });
+});
+});
+
         $(document).ready(function () {
             $('body .form-open').on('click', function (event) {
                 event.preventDefault();
