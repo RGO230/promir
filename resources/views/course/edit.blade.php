@@ -59,7 +59,7 @@
                         <label  class="col-md-4 col-form-label text-md-end">{{ __('Текст цены') }}</label>
 
                         <div class="col-md-6">
-                            <input type="text" class="form-control" value="{{$course->pricetext}}" name="pricetext" required autofocus>
+                            <input type="text" class="form-control" value="{{$course->pricetext}}" name="pricetext"  autofocus>
                         </div>
                     </div>
                     <div class="row mb-3">

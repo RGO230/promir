@@ -116,7 +116,31 @@
         <h2 class="title" style="align-self: center;margin-left:0">Личная консультация</h2>
         <div class="consult consult-main revealator-fade">
             <div class="consult-text" style="width: 50%;">
-                <div class="consult-text-item">
+             @foreach ($courses as  $course)
+             @if ($course['category'] == 'Личная консультация')
+             <div class="consult-text-item">
+                    <div class="number-wrap">
+                        <span class="number">{{$course['sessioncount']}}</span>
+                        <div>
+                            <p>{{ $course['title'] }}</p>
+                            @if ($course['pricetext'])
+                            <p class="price">  
+                            
+                                 {{$course['pricetext']}} / {{$course['price']}} ₽
+                                </p>
+                                 @else
+                                 <p class="price">  
+                            {{$course['price']}} ₽
+                        </p>
+                                 @endif
+                        </div>
+                    </div>
+                    <a class="custom-button form-open course-button" data-id="{{ $course['id'] }}">Выбрать</a>
+                </div>
+
+             @endif
+             @endforeach
+                <!-- <div class="consult-text-item">
                     <div class="number-wrap">
                         <span class="number">1</span>
                         <div>
@@ -124,9 +148,9 @@
                             <p class="price">1 час / 10 000 ₽</p>
                         </div>
                     </div>
-                    <a class="custom-button form-open"">Выбрать</a>
-                </div>
-                <div class=" consult-text-item">
+                    <a class="custom-button form-open">Выбрать</a>
+                </div> -->
+                <!-- <div class=" consult-text-item">
                     <div class="number-wrap">
                         <span class="number">1</span>
                         <div>
@@ -135,8 +159,8 @@
                         </div>
                     </div>
                     <a class="custom-button form-open">Выбрать</a>
-                </div>
-                <div class="consult-text-item">
+                </div> -->
+                <!-- <div class="consult-text-item">
                     <div class="number-wrap">
                         <span class="number">6</span>
                         <div>
@@ -145,8 +169,8 @@
                         </div>
                     </div>
                     <a class="custom-button form-open">Выбрать</a>
-                </div>
-                <div class="consult-text-item">
+                </div> -->
+                <!-- <div class="consult-text-item">
                     <div class="number-wrap">
                         <span class="number">12</span>
                         <div>
@@ -155,7 +179,7 @@
                         </div>
                     </div>
                     <a class="custom-button form-open">Выбрать</a>
-                </div>
+                </div> -->
             </div>
             <img src="images/фото+контур (2).png">
         </div>
@@ -247,24 +271,60 @@
     <div class="form">
     </div>
     <div class="modal">
-        <p class="modal-title">Заявка</p>
-        <form class="modal-form">
+        <p>Заявка</p>
+        <script src="https://securepay.tinkoff.ru/html/payForm/js/tinkoff_v2.js"></script>
+        <form class="modal-form" name="TinkoffPayForm" onsubmit="pay(this); return false;">
+            <input class="tinkoffPayRow" type="hidden" name="terminalkey" value="1668606448036DEMO">
+            <input class="tinkoffPayRow" type="hidden" name="frame" value="true">
+            <input class="tinkoffPayRow" type="hidden" name="language" value="ru">
+            <input class="tinkoffPayRow priceOrder" type="hidden" placeholder="Сумма заказа" name="amount" required>
+            <input class="tinkoffPayRow orderId" type="hidden" placeholder="Номер заказа" name="order">
             <p>Ваше имя
-                <input type="text" placeholder="Введите имя">
+            <input class="tinkoffPayRow" type="text" placeholder="Введите имя" name="name">
             </p>
-
             <p>Email
-                <input type="text" placeholder="Введите email">
+            <input class="tinkoffPayRow" type="text" placeholder="Введите email" name="email">
             </p>
-
             <p>Номер телефона
-                <input type="text" placeholder="+7 (123) 456-78-91">
+            <input class="tinkoffPayRow" type="text" placeholder="+7 (123) 456-78-91" name="phone">
             </p>
-
-            <button class="custom-button" type="submit">Перейти к оплате</button>
+            <input id="tinkoffpay-button" style="border: none" class="tinkoffPayRow custom-button"  type="submit" value="Оплатить" disabled>
         </form>
     </div>
     <script>
+             $(document).ready(function() {
+
+           
+            
+$('.course-button').on('click', function() {
+   
+   
+    var course_id = $(this).attr("data-id");
+    console.log(course_id)
+    $.ajax({
+        type: "POST",
+        url: '/initpay',
+        data: {                        
+            'id': course_id,
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+
+        },
+        success: function(resp) {
+
+            $('body .orderId').val(resp.order_id);
+            $('body .priceOrder').val(resp.price);
+
+            $('#tinkoffpay-button').removeAttr('disabled');
+        },
+        error: function(err) {
+            console.log(err)
+            $('#tinkoffpay-button').attr('disabled', 'disabled');
+            alert('На сайте произошла ошибка');
+        }
+    });
+});
+});
+
         $(document).ready(function() {
             $('body .form-open').on('click', function(event) {
                 event.preventDefault();

@@ -60,8 +60,7 @@ class CourseController extends Controller
             "course_id"=>"integer|nullable",
             "category" => "string|required",
             "userdescr"=>"string",
-            'pricetext'=>'string',
-            'sessioncount'=>'int'
+            
         ]);
 
         $path = '';
@@ -136,8 +135,7 @@ class CourseController extends Controller
             "category" => "string|required",
             "course_id"=>"integer|nullable",
             "userdescr"=>'string',
-            'pricetext'=>'string',
-            'sessioncount'=>'int'
+            
         ]);
 
         $path = $course->image;
