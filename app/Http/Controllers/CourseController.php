@@ -146,7 +146,7 @@ class CourseController extends Controller
     public function frontindex(){
         $this->checksubscribe();
         $user_id = Auth::user()->id;
-        $course = Course::whereHas('paycheck',function($q) use ($user_id) {
+        $course = Course::whereHas('paycheck','users',function($q) use ($user_id) {
             $q->where('user_id',$user_id)->where('paychek',true);
         })->get();
         

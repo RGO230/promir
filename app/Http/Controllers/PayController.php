@@ -29,7 +29,10 @@ class PayController extends Controller
         $course=Course::where('id',$courseConnection->course_id)->first();
         $courseConnection->duration = $course->duration;
         $courseConnection->save();
-        return response($courseConnection->id);
+        return response([
+            'order_id' => $courseConnection->id,
+            'price' => $course->price
+        ]);
     }
     public function success(Request $request){
         $request->validate([
