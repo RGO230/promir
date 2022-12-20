@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 18 2022 г., 19:26
+-- Время создания: Дек 19 2022 г., 21:26
 -- Версия сервера: 8.0.30
 -- Версия PHP: 7.4.30
 
@@ -54,21 +54,25 @@ CREATE TABLE `courses` (
   `course_id` bigint UNSIGNED DEFAULT NULL,
   `duration` int NOT NULL DEFAULT '0',
   `category` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `userdescr` text COLLATE utf8mb4_unicode_ci NOT NULL
+  `userdescr` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pricetext` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sessioncount` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп данных таблицы `courses`
 --
 
-INSERT INTO `courses` (`id`, `title`, `descr`, `image`, `video`, `created_at`, `updated_at`, `price`, `course_id`, `duration`, `category`, `userdescr`) VALUES
-(22, 'test', '<p>test</p>', '/uploads/639c853b77171.jpg', 'wedewd', '2022-12-16 11:48:27', '2022-12-16 11:48:27', 1000, NULL, 0, 'Ретрит', '<p>test</p>'),
-(23, 'subtest', '<p>sefafe</p>', '/uploads/639c85511e165.jpg', 'wedewd', '2022-12-16 11:48:49', '2022-12-16 11:48:49', 1000, 22, 0, 'Ретрит', '<p>subtest</p>'),
-(24, 'чя', '<p>явыс</p>', '/uploads/639c9df9536c7.jpg', 'ЫФВ', '2022-12-16 13:34:01', '2022-12-16 13:34:01', 1000, 22, 0, 'Ретрит', '<p>яыс</p>'),
-(25, 'ыу', '<p>фыва</p>', '/uploads/639ca05fad894.jpg', 'фвыа', '2022-12-16 13:44:15', '2022-12-16 13:44:15', 1, 22, 0, 'Ретрит', '<p>фвыа</p>'),
-(26, 'сч', '<p>фыав</p>', '/uploads/639ca078c8d25.webp', 'wedewd', '2022-12-16 13:44:40', '2022-12-16 13:44:40', 1000, NULL, 0, 'Ретрит', '<p>фвыа</p>'),
-(27, 'фыва', '<p>ыфва</p>', '/uploads/639ca08485f6e.jpg', 'ыфва', '2022-12-16 13:44:52', '2022-12-16 13:44:52', 1000, 26, 0, 'Ретрит', '<p>фвыа</p>'),
-(28, 'фыв', '<p>фыв</p>', '/uploads/639ca1a07c432.webp', 'wedewd', '2022-12-16 13:49:36', '2022-12-16 13:49:36', 1000, 22, 0, 'Ретрит', '<p>ыфв</p>');
+INSERT INTO `courses` (`id`, `title`, `descr`, `image`, `video`, `created_at`, `updated_at`, `price`, `course_id`, `duration`, `category`, `userdescr`, `pricetext`, `sessioncount`) VALUES
+(22, 'test', '<p>test</p>', '/uploads/639c853b77171.jpg', 'wedewd', '2022-12-16 11:48:27', '2022-12-19 11:48:17', 1000, NULL, 0, 'Абонемент в женский клуб', '<p>test</p>', NULL, NULL),
+(23, 'subtest', '<p>sefafe</p>', '/uploads/639c85511e165.jpg', 'wedewd', '2022-12-16 11:48:49', '2022-12-16 11:48:49', 1000, 22, 0, 'Ретрит', '<p>subtest</p>', NULL, NULL),
+(24, 'чя', '<p>явыс</p>', '/uploads/639c9df9536c7.jpg', 'ЫФВ', '2022-12-16 13:34:01', '2022-12-16 13:34:01', 1000, 22, 0, 'Ретрит', '<p>яыс</p>', NULL, NULL),
+(25, 'ыу', '<p>фыва</p>', '/uploads/639ca05fad894.jpg', 'фвыа', '2022-12-16 13:44:15', '2022-12-16 13:44:15', 1, 22, 0, 'Ретрит', '<p>фвыа</p>', NULL, NULL),
+(26, 'сч', '<p>фыав</p>', '/uploads/639ca078c8d25.webp', 'wedewd', '2022-12-16 13:44:40', '2022-12-16 13:44:40', 1000, NULL, 0, 'Ретрит', '<p>фвыа</p>', NULL, NULL),
+(27, 'фыва', '<p>ыфва</p>', '/uploads/639ca08485f6e.jpg', 'ыфва', '2022-12-16 13:44:52', '2022-12-16 13:44:52', 1000, 26, 0, 'Ретрит', '<p>фвыа</p>', NULL, NULL),
+(28, 'фыв', '<p>фыв</p>', '/uploads/639ca1a07c432.webp', 'wedewd', '2022-12-16 13:49:36', '2022-12-16 13:49:36', 1000, 22, 0, 'Ретрит', '<p>ыфв</p>', NULL, NULL),
+(29, 'eraf', '<p>awef</p>', '', 'wedewd', '2022-12-19 11:47:45', '2022-12-19 11:47:45', 1000, NULL, 0, 'Ретрит', '<p>awef</p>', NULL, NULL),
+(30, 'dsfwaf', '<p>waf</p>', '', 'weafwef', '2022-12-19 15:24:15', '2022-12-19 15:24:15', 1000, NULL, 0, 'Ретрит', '<p>awefwaef</p>', '232rf3', 12);
 
 -- --------------------------------------------------------
 
@@ -166,7 +170,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (34, '2022_11_26_173829_add_duration_to_course_users_table', 3),
 (35, '2022_12_04_190102_change_video_column', 3),
 (36, '2022_12_12_135716_add_category_to_courses_table', 3),
-(37, '2022_12_12_145612_add_audio_change_to_courses_table', 3);
+(37, '2022_12_12_145612_add_audio_change_to_courses_table', 3),
+(38, '2022_12_19_181147_add_pricetext_and_sessioncount_to_courses_table', 4);
 
 -- --------------------------------------------------------
 
@@ -343,7 +348,7 @@ ALTER TABLE `chats`
 -- AUTO_INCREMENT для таблицы `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT для таблицы `course_users`
@@ -361,7 +366,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT для таблицы `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT для таблицы `personal_access_tokens`

@@ -46,13 +46,10 @@
         @foreach ($courses as  $course)
 
         
-            <!-- Провека на категорию. Если не курсы - не выводим -->
-            @if ($course == 'Курсы')
-                <?php print_r($course); 
-                break;
-                 ?>
-            @endif
-        
+            <!-- Провека на категорию. Если курсы - не выводим -->
+            @if ($course['category'] == 'Курсы')
+                
+            
     
             <div class="about revealator-fade revealator-once revealator-duration15">
 
@@ -100,7 +97,7 @@
         </div>  
         @endforeach
         @endif
-               
+        @endif
         @endforeach
 
 
