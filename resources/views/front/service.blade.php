@@ -47,9 +47,7 @@
 
         @foreach ($courses as  $course)
         
-        @if ($course['category'] != 'Курсы' && $course['category'] != 'Блоки')
-        
-        
+        @if ($course['category'] == 'Абонемент в женский клуб')
         <div class="about revealator-fade revealator-once revealator-duration15">
             <img class="ellipse" src="images/Ellipse 2.png" style="left: 0; width: 200px;">
 
@@ -59,17 +57,78 @@
                    <h2>{{ $course['title'] }}</h2>
                     <p>{!! $course['descr'] !!}</p>
                 
-                <p>Стоимость:</p>
-                <p style="margin-bottom: 50px;" class="price">{{ $course['price'] }} ₽ / {{ $course['pricetext'] }}</p>
-                <!-- <p style="margin-bottom: 50px;" class="price">5000 ₽/ 3 МЕС</p> -->
+            
+
+                <div style="display: flex;flex-direction:column;align-items: flex-start;">
+                @foreach($course['sub_courses'] as $sub_course)
                 @if (Auth::user())
-                <a  style="padding: 20px 50px" class="custom-button form-open course-button"  data-id="{{ $course['id'] }}">Выбрать</a>
+                <a  class="custom-button form-open course-button" style="margin-bottom: 50px;cursor:pointer;padding: 15px 45px;" data-id="{{ $sub_course['id'] }}">{{ $sub_course['price'] }} ₽ / {{ $sub_course['pricetext'] }}</a>
                 @else
-                <a  style="padding: 20px 50px" class="custom-button form-open" href="/login">Выбрать</a>
+                <a href='/login' class="custom-button" style="margin-bottom: 50px;cursor:pointer;padding: 15px 45px;">{{ $sub_course['price'] }} ₽ / {{ $sub_course['pricetext'] }}</a>
                 @endif
+                @endforeach
+                </div>
+                
+               
             </div>
         </div>
-            @endif
+        @endif
+
+
+        @if ($course['category'] == 'Медитация')
+        <div class="about revealator-fade revealator-once revealator-duration15">
+            <img class="ellipse" src="images/Ellipse 2.png" style="left: 0; width: 200px;">
+
+           
+
+            <div class="about-text ">
+                   <h2>{{ $course['title'] }}</h2>
+                    <p>{!! $course['descr'] !!}</p>
+                
+            
+
+                <div style="display: flex;flex-direction:column;align-items: flex-start;">
+                @foreach($course['sub_courses'] as $sub_course)
+                @if (Auth::user())
+                <a  class="custom-button form-open course-button" style="margin-bottom: 50px;cursor:pointer;padding: 15px 45px;" data-id="{{ $sub_course['id'] }}">{{ $sub_course['price'] }} ₽ / {{ $sub_course['pricetext'] }}</a>
+                @else
+                <a href='/login' class="custom-button" style="margin-bottom: 50px;cursor:pointer;padding: 15px 45px;">{{ $sub_course['price'] }} ₽ / {{ $sub_course['pricetext'] }}</a>
+                @endif
+                @endforeach
+                </div>
+                
+               
+            </div>
+            <img src="{{ $course['image'] }}">
+        </div>
+        @endif
+
+        @if ($course['category'] == 'Ретрит')
+        <div class="about revealator-fade revealator-once revealator-duration15">
+            <img class="ellipse" src="images/Ellipse 2.png" style="left: 0; width: 200px;">
+
+            <img src="{{ $course['image'] }}">
+
+            <div class="about-text ">
+                   <h2>{{ $course['title'] }}</h2>
+                    <p>{!! $course['descr'] !!}</p>
+                
+            
+
+                <div style="display: flex;flex-direction:column;align-items: flex-start;">
+                @foreach($course['sub_courses'] as $sub_course)
+                @if (Auth::user())
+                <a  class="custom-button form-open course-button" style="margin-bottom: 50px;cursor:pointer;padding: 15px 45px;" data-id="{{ $sub_course['id'] }}">{{ $sub_course['price'] }} ₽ / {{ $sub_course['pricetext'] }}</a>
+                @else
+                <a href='/login' class="custom-button" style="margin-bottom: 50px;cursor:pointer;padding: 15px 45px;">{{ $sub_course['price'] }} ₽ / {{ $sub_course['pricetext'] }}</a>
+                @endif
+                @endforeach
+                </div>
+                
+               
+            </div>
+        </div>
+        @endif
             
 
             
@@ -104,6 +163,37 @@
         
         @endforeach
         </div>
+
+        @foreach ($courses as  $course)
+        @if ($course['category'] == 'Милые завтраки')
+        <div class="about revealator-fade revealator-once revealator-duration15">
+            <img class="ellipse" src="images/Ellipse 2.png" style="left: 0; width: 200px;">
+
+            
+
+            <div class="about-text ">
+                   <h2>{{ $course['title'] }}</h2>
+                    <p>{!! $course['descr'] !!}</p>
+                
+            
+
+                <div style="display: flex;flex-direction:column;align-items: flex-start;">
+                @foreach($course['sub_courses'] as $sub_course)
+                @if (Auth::user())
+                <a  class="custom-button form-open course-button" style="margin-bottom: 50px;cursor:pointer;padding: 15px 45px;" data-id="{{ $sub_course['id'] }}">{{ $sub_course['price'] }} ₽ / {{ $sub_course['pricetext'] }}</a>
+                @else
+                <a href='/login' class="custom-button" style="margin-bottom: 50px;cursor:pointer;padding: 15px 45px;">{{ $sub_course['price'] }} ₽ / {{ $sub_course['pricetext'] }}</a>
+                @endif
+                @endforeach
+                </div>
+                
+               
+            </div>
+            <img src="{{ $course['image'] }}">
+        </div>
+        @endif
+        @endforeach
+       
 
         <!-- <div class="about revealator-fade revealator-once revealator-duration15">
             <img class="ellipse" src="images/Ellipse 2.png" style="left: 0; width: 200px;">
@@ -157,8 +247,8 @@
                 <a href="" class="custom-button form-open">Выбрать</a>
             </div>
             <img src="images/фото+контур (4).png">
-        </div> -->
-       
+        </div>
+        -->
 
 
 
