@@ -31,6 +31,7 @@ const MyHeader = () => {
 
                 <div className={`header-navbar ${burger? 'active':''}`}>
                     <Link to='/stream-page'>Личный кабинет</Link>
+                    <Link to='/courses'>Курсы</Link>
                     <Link to='/'>О проекте</Link>
                     <Link to='/'>Контакты</Link>
 
