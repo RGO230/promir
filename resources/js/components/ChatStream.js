@@ -4,16 +4,18 @@ import Pusher from "pusher-js";
 const ChatStream = () => {
 
     const connectToSocket=()=>{
-            Pusher.logToConsole = true;
+        
 
-            let pusher = new Pusher('4db31c7b4cddbe1cc61f', {
-                cluster: 'eu'
-            });
+        let pusher = new Pusher('4db31c7b4cddbe1cc61f', {
+          cluster: 'eu'
+        });
+    
+        let channel = pusher.subscribe('my-channel');
+        channel.bind('my-event', function(data) {
+          alert(JSON.stringify(data));
+        });
 
-            let channel = pusher.subscribe('my-channel');
-            channel.bind('my-event', function(data) {
-                alert(JSON.stringify(data));
-            });
+    
 
     }
 

@@ -40,7 +40,6 @@ class StreamController extends Controller
             "descr" => "string|required",
             "youtube_flow" => "string|required",
             "file" => "file|required",
-            "streamtoken"=>"streamtoken|required",
         ]);
 
         $path = '';

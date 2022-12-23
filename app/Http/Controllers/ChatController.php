@@ -18,7 +18,7 @@ class ChatController extends Controller
             ]);
        
             event(new MessageSend($request->message,$request->stream_id,$request->user_id));
-            Chat::create($request->validated());
+            Chat::create($request->all());
             
             return response()->json(['Чат получен']);
     }

@@ -31,14 +31,17 @@ class MessageSend implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return[
-            new PrivateChannel('chat-'.$this->stream_id),
-            new PrivateChannel('chat-'.$this->user_id),
-            new PrivateChannel('chat-'.$this->message)
-        ];
+        // return[
+        //     new PrivateChannel('chat-'.$this->stream_id),
+        //     new PrivateChannel('chat-'.$this->user_id),
+        //     new PrivateChannel('chat-'.$this->message)
+        // ];
+        
+        return ['my-channel'];
     }
     public function broadcastAs()
   {
-      return 'Streamchat';
+   
+    return 'my-event';
   } 
 }
