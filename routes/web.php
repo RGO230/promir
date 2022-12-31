@@ -29,11 +29,17 @@ Route::post('initpay','PayController@init');
 
 Route::get('pay-success','PayController@success');
 Route::get('pay-error','PayController@error');
-
+Route::get('/interval','ConsultationController@getInfo');
+Route::post('interval','ConsultationController@create');
 Auth::routes();
 Route::middleware(['auth'])->group(function(){
     Route::get('lk/course/', 'CourseController@frontLk')->name('front.course');
     Route::middleware(['role'])->group(function(){
+        Route::resource('consult','ConsultationController');
+        Route::get('consult/{consult}/destroy','ConsultationController@destroy');
+        Route::resource('graphic', 'GraphicController');
+        Route::get('/graphic/{graphic}/destroy', 'GraphicController@destroy');
+        Route::post('/graphic/{graphic}/update', 'GraphicController@update');
         Route::resource('course', 'CourseController');
         Route::get('/course/{course}/destroy', [App\Http\Controllers\CourseController::class, 'destroy']);
         Route::post('/course/{course}/update', [App\Http\Controllers\CourseController::class, 'update']);

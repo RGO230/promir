@@ -81,6 +81,14 @@
                                     <a class="nav-link"
                                         href="{{ route('stream.index') }}">{{ __('Прямые трансляции') }}</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link"
+                                        href="{{ route('consult.index') }}">{{ __('Консультации') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link"
+                                        href="{{ route('graphic.index') }}">{{ __('График работы') }}</a>
+                                </li>
                             @else
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('front.course') }}">{{ __('Мои курсы') }}</a>
