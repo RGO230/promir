@@ -27,6 +27,11 @@ class HomeController extends Controller
         return view('home');
     }
 
+    public function subscribe()
+    {
+        return view('front.subscribe');
+    }
+
     public function frontIndex()
     {
         return view('front.index', [

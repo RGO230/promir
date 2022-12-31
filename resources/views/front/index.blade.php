@@ -46,7 +46,7 @@
             </div>
             <div class="info-img">
                 <div style="display: flex;">
-                    <img class="main-image" src="images/фото с главной.png">
+                    <img class="main-image" src="images/mainphoto.png">
                     <img class="tree-image" src="images/ветка бок.png">
                 </div>
                 <img style="width: 60%" src="images/Line 2.png">
@@ -108,17 +108,17 @@
         <div class="revealator-fade line-2"
             style="align-self: flex-end; display: flex; align-items: center; position: relative; overflow-x:hidden;">
             <form class="tg-form">
-                <a target="_blank" href="https://t.me/milarmony"><button class="custom-button">Подписаться</button></a>
+                <a target="_blank" href="https://t.me/milarmony" class="custom-button" >Подписаться</a>
             </form>
             <img class="line-img" src="images/Line 24.png">
             <img class="ellipse" src="images/Ellipse 8.png" style="right: 0; top: -450px; width: 200px;">
         </div>
         <h2 class="title" style="align-self: center;margin-left:0">Личная консультация</h2>
-        <div class="consult consult-main revealator-fade">
+        <div class="consult consult-main revealator-fade" style="z-index:2;">
             <div class="consult-text" style="width: 50%;">
              @foreach ($courses as  $course)
              @if ($course['category'] == 'Личная консультация')
-             <div class="consult-text-item">
+             <!-- <div class="consult-text-item">
                     <div class="number-wrap">
                         <span class="number">{{$course['sessioncount']}}</span>
                         <div>
@@ -136,10 +136,23 @@
                         </div>
                     </div>
                     <a class="custom-button form-open course-button" data-id="{{ $course['id'] }}">Выбрать</a>
-                </div>
+                </div> -->
+                
 
+                <div class="consult-text-item">
+                <span class="number">{{$course['sessioncount']}}</span>
+                    <div class="number-wrap">
+                        
+                        <div>
+                            <p>{{ $course['title'] }}</p>
+                            
+                        </div>
+                    </div>
+                </div>
              @endif
              @endforeach
+             <div style="margin: 40px 0;"><a class="custom-button" style="margin-top:10px;" href='/subscribe'>Записаться на консультацию</a></div>
+             
                 <!-- <div class="consult-text-item">
                     <div class="number-wrap">
                         <span class="number">1</span>
@@ -193,7 +206,7 @@
                 <div class="review-item">
                     <div style="background-image: url(images/freestocks-9UVmlIb0wJU-unsplash.jpg);"
                         class="slider-image"></div>
-                    <span>01.02.2022</span>
+                    <span>09.02.2022</span>
                     <p>Мила, благодарю за вебинар. Мне нравится находиться в пространстве развивающихся с людей с
                         активными, большими целями.
                         От себя хочу отметить, что больше стала впускать в свою жизнь подарков и бонусов. И сразу же
@@ -202,7 +215,7 @@
                 <div class="review-item">
                     <div style="background-image: url(images/clarisse-meyer-x9cXI2eQLBw-unsplash.jpg);"
                         class="slider-image"></div>
-                    <span>01.02.2022</span>
+                    <span>05.03.2022</span>
                     <p>Мила, привет!
                         Прошла неделя после финансового марафона и ко мне пришла работа, которую я так долго ждала.
                         Можно сказать, работа мечты. После такого количества собеселований и отказов, я уже совсем руки
@@ -213,7 +226,7 @@
                 <div class="review-item">
                     <div style="background-image: url(images/axel-vazquez-A77FAov-OzI-unsplash.jpg);"
                         class="slider-image"></div>
-                    <span>01.02.2022</span>
+                    <span>04.01.2022</span>
                     <p>Милочка, у меня муж получил повышение. Я сама ничего не получила, но сработало вот так🤩 Мы
                         закрыли наши финансовые трудности, которые я обозначила в запросе, его прибавкой
                         Благодарю, дорогая❤️❤️❤️</p>
@@ -221,7 +234,7 @@
                 <div class="review-item">
                     <div style="background-image: url(images/marie-michele-bouchard-3U9BCWHMhUw-unsplash.jpg);"
                         class="slider-image"></div>
-                    <span>01.02.2022</span>
+                    <span>02.09.2022</span>
                     <p>Здравствуйте, девушки!
                         Я благодарю за семинар, он поменял мое состояние в отношениях. Я теперь довольна всем
                         происходящим, я поняла как перестать жить в ожидании определенных поступков от партнера, нет
@@ -232,7 +245,7 @@
                 <div class="review-item">
                     <div style="background-image: url(images/marco-chilese-nHIb0s-BZMA-unsplash.jpg);"
                         class="slider-image"></div>
-                    <span>01.02.2022</span>
+                    <span>12.08.2022</span>
                     <p>Мила, очень благодарна тебе за этот семинар! Увидела и отпустила страхи, поняла, какие отношения
                         хочу и к чему стремиться.
                         (Просто наверное не с наскока 😂)
@@ -387,7 +400,10 @@ $('.course-button').on('click', function() {
             display: flex;
             height: auto;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
+        }
+        .consult-text-item:last-child{
+            margin-bottom: 53px;
         }
     </style>
 </body>

@@ -41,11 +41,13 @@
 /* Fade effect */
 .revealator-fade {
   opacity: 0;
+  z-index: 2;
 }
 .revealator-fade.revealator-within,
 .revealator-fade.revealator-partially-above,
 .revealator-fade.revealator-above {
   opacity: 1;
+  z-index: 2;
 }
 /* Slide up effect */
 .revealator-slideup {

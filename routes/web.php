@@ -22,7 +22,9 @@ Route::get('/service', 'HomeController@service');
  Route::get('/subcourse',[App\Http\Controllers\PayController::class,'getCoursesWithSubCourses']);
  Route::get('/courses','CourseController@frontIndex');
 
+ Route::get('/subscribe','HomeController@subscribe');
 
+ 
 Route::post('initpay','PayController@init');
 
 Route::get('pay-success','PayController@success');
