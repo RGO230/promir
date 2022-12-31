@@ -182,6 +182,42 @@ td p, td a{
 #daysWrapper{
   display: none;
 }
+
+.time-of-day__item__head{
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #262626;
+     }
+     .time-of-day__item__head p{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        text-transform: uppercase;
+        color: #262626;
+     }
+     .time-of-day__item__body{
+      display: flex;
+      padding: 10px 0;
+      gap:10px;
+     }
+     .time-of-day__item__body__hour{
+      padding: 0 30px;
+      border: 1px solid rgba(38, 38, 38, 0.25);
+     }
+
+    .error-message{
+      text-align: center;
+    }
+    #loaderGif, #loaderGifDay{
+      height: 50px;
+    width: 50px;
+    margin: 10px auto;
+    display: none;
+
+    }
+    #divCal, #daytimesHolder{
+      display: none;
+    }
     </style>
 
 
@@ -218,6 +254,10 @@ td p, td a{
         
 <button id="btnNext" type="button"></button>
     </div>
+    <div id="loaderGif">
+    <img    src="/images/loading.gif" alt="load">
+    </div>
+    
 <div id="divCal"></div>
 </div>
 
@@ -232,44 +272,19 @@ td p, td a{
 <button id="btnNextDay" type="button"></button>
     </div>
 
-    <style>
-     .time-of-day__item__head{
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid #262626;
-     }
-     .time-of-day__item__head p{
-        font-style: normal;
-        font-weight: 500;
-        font-size: 24px;
-        text-transform: uppercase;
-        color: #262626;
-     }
-     .time-of-day__item__body{
-      display: flex;
-      padding: 10px 0;
-     }
-     .time-of-day__item__body__hour{
-      padding: 0 30px;
-      border: 1px solid rgba(38, 38, 38, 0.25);
-     }
+   
 
-    
-    </style>
+    <div id="loaderGifDay">
+    <img    src="/images/loading.gif" alt="load">
+    </div>
 
-
-    <div class="time-of-day">
-      <div class="time-of-day__item">
+    <div class="time-of-day" id="daytimesHolder">
+      <div class="time-of-day__item" >
         <div class="time-of-day__item__head">
           <p>Утро</p>
           <p>&#9660;</p>
         </div>
-        <div class="time-of-day__item__body">
-
-        <div class="time-of-day__item__body__hour">
-         <p>10:00</p>
-        </div>
-
+        <div class="time-of-day__item__body" id="morning">
         </div>
       </div>
 
@@ -278,12 +293,7 @@ td p, td a{
           <p>День</p>
           <p>&#9660;</p>
         </div>
-        <div class="time-of-day__item__body">
-
-        <div class="time-of-day__item__body__hour">
-         <p>10:00</p>
-        </div>
-
+        <div class="time-of-day__item__body" id="daytime">
         </div>
       </div>
 
@@ -293,12 +303,7 @@ td p, td a{
           <p>Вечер</p>
           <p>&#9660;</p>
         </div>
-        <div class="time-of-day__item__body">
-
-        <div class="time-of-day__item__body__hour">
-         <p>10:00</p>
-        </div>
-
+        <div class="time-of-day__item__body" id="evening">
         </div>
       </div>
 
@@ -357,9 +362,9 @@ this.Months =['Январь', 'Февраль', 'Март', 'Апрель', 'М�
 //Устанавливаем текущий месяц, год
 var d = new Date();
 
-this.currMonth = d.getMonth('9');
-this.currYear = d.getFullYear('22');
-this.currDay = d.getDate('3');
+this.currMonth = d.getMonth();
+this.currYear = d.getFullYear();
+this.currDay = d.getDate();
 };
 
 // Переход к следующему месяцу
@@ -395,6 +400,10 @@ this.showMonth(this.currYear, this.currMonth);
 
 // Показать месяц (год, месяц)
 Cal.prototype.showMonth = function(y, m) {
+  let loaderGif=document.getElementById('loaderGif');
+  loaderGif.style.display='block';
+  document.getElementById(this.divId).style.display='none';
+
 
 var d = new Date()
 // Первый день недели в выбранном месяце 
@@ -455,10 +464,10 @@ do {
   var chkY = chk.getFullYear();
   var chkM = chk.getMonth();
   if (chkY == this.currYear && chkM == this.currMonth && i == this.currDay) {
-    html += `<td class="today open-day-form" data-id="${(chkM+1)+'-'+i+'-'+chkY}"><p>${i}</p></td>`;
+    html += `<td class="today open-day-form" data-id="${chkY+'-'+(chkM+1)+'-'+i}"><p>${i}</p></td>`;
   } 
   else if(chkY >= this.currYear && chkM >= this.currMonth && i >= this.currDay || (chkY != this.currYear && chkM != this.currMonth)){
-    html += `<td  class="normal open-day-form" data-id="${(chkM+1)+'-'+i+'-'+chkY}"><p>${i}</p></td>`;
+    html += `<td  class="normal open-day-form" data-id="${this.currYear+'-'+ ((this.currMonth+1)<9 ? ('0'+(this.currMonth+1)):(this.currMonth+1)) +'-'+ (i<9? ('0'+i):i)}"><p>${i}</p></td>`;
   }
   else {
     html += '<td class="not-current"><p>' + i + '</p></td>';
@@ -484,7 +493,16 @@ do {
 html += '</table>';
 
 // Записываем HTML в div
+
 document.getElementById(this.divId).innerHTML = html;
+
+
+setTimeout(()=>{
+  loaderGif.style.display='none';
+  document.getElementById(this.divId).style.display='block';
+},3000)
+
+
 };
 
 // При загрузке окна
@@ -497,9 +515,11 @@ c.showcurr();
 // Привязываем кнопки «Следующий» и «Предыдущий»
 getId('btnNext').onclick = function() {
   c.nextMonth();
+  getDayButtons();
 };
 getId('btnPrev').onclick = function() {
   c.previousMonth();
+  getDayButtons();
 };
 getDayButtons()
 }
@@ -528,27 +548,100 @@ return document.getElementById(id);
     let dateDay=new Date(e.target.dataset.id)
     calendarWrapper.style.display='none';
     daysWrapper.style.display='block';
-    console.log(dateDay)
+    openDaySubscribe(e.target.dataset.id)
   });
   }
 
-  function openDaySubscribe(){
-    let dayData={
-info: {
-schedule: {
-"time_from":"10:00",
-"time_to":"20:00",
-},
-selected: [
-"11:30",
-"15:00",
-"17:00"
-]
-}
- }
+  function openDaySubscribe(e){
+   let daytimesHolder = document.getElementById('daytimesHolder');
+   let loaderGifDay = document.getElementById('loaderGifDay');
+
+   daytimesHolder.style.display='none';
+   loaderGifDay.style.display='block';
+
+    let morningBlock=document.getElementById('morning'),
+    daytimeBlock=document.getElementById('daytime'),
+    eveningBlock=document.getElementById('evening'),
+    mainDayFull=document.getElementById('mainDayFull'),
+    mainDay=document.getElementById('mainDay')
 
 
+   let DaysOfWeek = [
+  'Понедельник',
+  'Вторник',
+  'Среда',
+  'Четверг',
+  'Пятница',
+  'Суббота',
+  'Воскресенье'
+];
 
+// Месяцы начиная с января
+let Months =['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
+    console.log(e)
+    mainDayFull.innerHTML=''+e.slice(8,10)+' ' + Months[+e.slice(5,7)-1];
+    mainDay.innerHTML= DaysOfWeek[new Date(e.slice(5,7)+'-'+e.slice(8,9)+'-'+e.slice(0,4)).getDay()-1];
+   
+
+
+    $.ajax({
+        type: "GET",
+        url: '/interval',
+        data: {                        
+          date:e
+        },
+        success: function(resp) {
+
+            console.log(resp)
+            resp.info.intervals.forEach(item=>{
+              if(+item.slice(0,2)<12){
+                morningBlock.innerHTML+=
+            `<div class="time-of-day__item__body__hour">
+            <p>${item}</p>
+            </div>`
+              }
+              else if(+item.slice(0,2)>12 && +item.slice(0,2)<18){
+                daytimeBlock.innerHTML+=
+            `<div class="time-of-day__item__body__hour">
+            <p>${item}</p>
+            </div>`
+              }
+              else{
+                eveningBlock.innerHTML+=
+            `<div class="time-of-day__item__body__hour">
+            <p>${item}</p>
+            </div>`
+              }
+              
+            })
+
+            
+            daytimesHolder.style.display='block';
+           loaderGifDay.style.display='none';
+
+        //     <div class="time-of-day__item__body__hour" >
+        //  <p>10:00</p>
+        // </div>
+        },
+        error: function(err) {
+            console.log(err)
+            if(err.responseText=="Нет информации по этому дню недели"){
+              let daytimesHolder=document.getElementById('daytimesHolder');
+              daytimesHolder.innerHTML='<p class="error-message">'+err.responseText+'</p>'
+            }
+            else if(err.responseText=="День занят полностью"){
+              let daytimesHolder=document.getElementById('daytimesHolder');
+              daytimesHolder.innerHTML='<p> class="error-message">'+err.responseText+'</p>'
+            }
+
+            else{
+              let daytimesHolder=document.getElementById('daytimesHolder');
+              daytimesHolder.innerHTML='<p class="error-message">Нет информации по этому дню недели</p>'
+            }
+            daytimesHolder.style.display='block';
+   loaderGifDay.style.display='none';
+        }
+    });
 
 }
  
