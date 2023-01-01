@@ -203,10 +203,19 @@ td p, td a{
      .time-of-day__item__body__hour{
       padding: 0 30px;
       border: 1px solid rgba(38, 38, 38, 0.25);
+      
      }
 
-    .error-message{
+     .normal-hour:hover{
+      background: #75AFC8;
+      color: white;
+      cursor: pointer;
+      
+     }
+
+    #error-message{
       text-align: center;
+      display: none;
     }
     #loaderGif, #loaderGifDay{
       height: 50px;
@@ -217,6 +226,10 @@ td p, td a{
     }
     #divCal, #daytimesHolder{
       display: none;
+    }
+
+    .selected-hour{
+      color: #c0c0c0;
     }
     </style>
 
@@ -278,6 +291,9 @@ td p, td a{
     <img    src="/images/loading.gif" alt="load">
     </div>
 
+    
+
+    <p id="error-message"></p>
     <div class="time-of-day" id="daytimesHolder">
       <div class="time-of-day__item" >
         <div class="time-of-day__item__head">
@@ -310,6 +326,29 @@ td p, td a{
     </div>
 
 </div>
+<div class="form">
+    </div>
+
+<div class="modal">
+        <p>Заявка</p>
+        <form class="modal-form" id="subscribeForm">
+            <p>Ваше имя
+            <input class="tinkoffPayRow" id="nameInput" type="text" placeholder="Введите имя" name="name">
+            </p>
+            <p>Email
+            <input class="tinkoffPayRow" id="emailInput" type="text" placeholder="Введите email" name="email">
+            </p>
+            <p>Номер телефона
+            <input class="tinkoffPayRow" id="phoneInput" type="text" placeholder="+7 (123) 456-78-91" name="phone">
+            </p>
+
+            <p>Дата
+            <input id="selectedDateInput"  class="tinkoffPayRow" type="text"  name="date">
+            </p>
+            <p id="submitError" style="color:red;display:none;"></p>
+            <input style="border: none" class="custom-button"  type="submit" value="Записаться" >
+        </form>
+    </div>
 
 
 
@@ -467,7 +506,7 @@ do {
     html += `<td class="today open-day-form" data-id="${chkY+'-'+(chkM+1)+'-'+i}"><p>${i}</p></td>`;
   } 
   else if(chkY >= this.currYear && chkM >= this.currMonth && i >= this.currDay || (chkY != this.currYear && chkM != this.currMonth)){
-    html += `<td  class="normal open-day-form" data-id="${this.currYear+'-'+ ((this.currMonth+1)<9 ? ('0'+(this.currMonth+1)):(this.currMonth+1)) +'-'+ (i<9? ('0'+i):i)}"><p>${i}</p></td>`;
+    html += `<td  class="normal open-day-form" data-id="${this.currYear+'-'+ ((this.currMonth+1)<=9 ? ('0'+(this.currMonth+1)):(this.currMonth+1)) +'-'+ (i<=9? ('0'+i):i)}"><p>${i}</p></td>`;
   }
   else {
     html += '<td class="not-current"><p>' + i + '</p></td>';
@@ -500,7 +539,8 @@ document.getElementById(this.divId).innerHTML = html;
 setTimeout(()=>{
   loaderGif.style.display='none';
   document.getElementById(this.divId).style.display='block';
-},3000)
+  getDayButtons();
+},5000)
 
 
 };
@@ -532,6 +572,7 @@ return document.getElementById(id);
 </script>
 
 <script>
+  let selectedDate='';
   function getDayButtons(){
   //   let daysBlock=$('.open-day-form')
   // let daysBlockArray=[...daysBlock]
@@ -544,15 +585,22 @@ return document.getElementById(id);
  let calendarWrapper= document.getElementById('monthWrapper');
  let daysWrapper=document.getElementById('daysWrapper');
 
+  
+
+ console.log($('.open-day-form'))
   $('.open-day-form').click((e)=>{
-    let dateDay=new Date(e.target.dataset.id)
+   console.log(e.currentTarget.dataset.id)
+    let dateDay=new Date(e.currentTarget.dataset.id)
     calendarWrapper.style.display='none';
     daysWrapper.style.display='block';
+    selectedDate=e.target.dataset.id;
     openDaySubscribe(e.target.dataset.id)
   });
   }
 
   function openDaySubscribe(e){
+    
+
    let daytimesHolder = document.getElementById('daytimesHolder');
    let loaderGifDay = document.getElementById('loaderGifDay');
 
@@ -565,7 +613,7 @@ return document.getElementById(id);
     mainDayFull=document.getElementById('mainDayFull'),
     mainDay=document.getElementById('mainDay')
 
-
+   
    let DaysOfWeek = [
   'Понедельник',
   'Вторник',
@@ -579,11 +627,10 @@ return document.getElementById(id);
 // Месяцы начиная с января
 let Months =['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
     console.log(e)
-    mainDayFull.innerHTML=''+e.slice(8,10)+' ' + Months[+e.slice(5,7)-1];
-    mainDay.innerHTML= DaysOfWeek[new Date(e.slice(5,7)+'-'+e.slice(8,9)+'-'+e.slice(0,4)).getDay()-1];
+     mainDayFull.innerHTML=''+e.slice(8,10)+' ' + Months[+e.slice(5,7)-1];
    
-
-
+    let getDayOfWeek= (new Date(e.slice(5,7)+'-'+e.slice(8,10)+'-'+e.slice(0,4)).getDay())?(new Date(e.slice(5,7)+'-'+e.slice(8,10)+'-'+e.slice(0,4)).getDay()-1):6
+    mainDay.innerHTML= DaysOfWeek[getDayOfWeek];
     $.ajax({
         type: "GET",
         url: '/interval',
@@ -591,58 +638,211 @@ let Months =['Января', 'Февраля', 'Марта', 'Апреля', 'М
           date:e
         },
         success: function(resp) {
-
+          morningBlock.innerHTML=''
+          daytimeBlock.innerHTML=''
+          eveningBlock.innerHTML=''
             console.log(resp)
             resp.info.intervals.forEach(item=>{
+              let errorMessage=document.getElementById('error-message');
+              errorMessage.style.display='none'
               if(+item.slice(0,2)<12){
-                morningBlock.innerHTML+=
-            `<div class="time-of-day__item__body__hour">
-            <p>${item}</p>
-            </div>`
+
+                resp.info.selected.forEach(itemSelect=>{
+                  if(item == itemSelect){
+                    morningBlock.innerHTML+=
+                    `<div class="time-of-day__item__body__hour selected-hour">
+                    <p>${item}</p>
+                    </div>`
+                  }
+                  else{
+                    morningBlock.innerHTML+=
+                    `<div class="time-of-day__item__body__hour normal-hour">
+                    <p>${item}</p>
+                    </div>`
+                  }
+                })
+
+                
               }
               else if(+item.slice(0,2)>12 && +item.slice(0,2)<18){
-                daytimeBlock.innerHTML+=
-            `<div class="time-of-day__item__body__hour">
-            <p>${item}</p>
-            </div>`
+
+                resp.info.selected.forEach(itemSelect=>{
+                  if(item == itemSelect){
+                    daytimeBlock.innerHTML+=
+                    `<div class="time-of-day__item__body__hour selected-hour">
+                    <p>${item}</p>
+                    </div>`
+                  }
+                  else{
+                    daytimeBlock.innerHTML+=
+                    `<div class="time-of-day__item__body__hour normal-hour">
+                    <p>${item}</p>
+                    </div>`
+                  }
+                })
+
+                
               }
               else{
-                eveningBlock.innerHTML+=
-            `<div class="time-of-day__item__body__hour">
-            <p>${item}</p>
-            </div>`
+
+                resp.info.selected.forEach(itemSelect=>{
+                  if(item == itemSelect){
+                    eveningBlock.innerHTML+=
+                    `<div class="time-of-day__item__body__hour selected-hour">
+                    <p>${item}</p>
+                    </div>`
+                  }
+                  else{
+                    eveningBlock.innerHTML+=
+                    `<div class="time-of-day__item__body__hour normal-hour">
+                    <p>${item}</p>
+                    </div>`
+                  }
+                })
+
+            //     eveningBlock.innerHTML+=
+            // `<div class="time-of-day__item__body__hour">
+            // <p>${item}</p>
+            // </div>`
               }
               
             })
+            
+            
 
             
             daytimesHolder.style.display='block';
            loaderGifDay.style.display='none';
-
-        //     <div class="time-of-day__item__body__hour" >
-        //  <p>10:00</p>
-        // </div>
+           $('#btnNextDay').removeAttr('disabled');
+           $('#btnPrevDay').removeAttr('disabled');
+        getHoursBlocks()
         },
         error: function(err) {
             console.log(err)
             if(err.responseText=="Нет информации по этому дню недели"){
               let daytimesHolder=document.getElementById('daytimesHolder');
-              daytimesHolder.innerHTML='<p class="error-message">'+err.responseText+'</p>'
+              let errorMessage=document.getElementById('error-message');
+              daytimesHolder.style.display='none';
+
+              errorMessage.innerHTML='<p class="error-message">'+err.responseText+'</p>';
+              errorMessage.style.display='block';
             }
             else if(err.responseText=="День занят полностью"){
               let daytimesHolder=document.getElementById('daytimesHolder');
-              daytimesHolder.innerHTML='<p> class="error-message">'+err.responseText+'</p>'
+              let errorMessage=document.getElementById('error-message');
+              daytimesHolder.style.display='none';
+              daytimesHolder.style.display='none';
+
+              errorMessage.innerHTML='<p class="error-message">'+err.responseText+'</p>';
+              errorMessage.style.display='block';
+              daytimesHolder.style.display='none';
             }
 
             else{
               let daytimesHolder=document.getElementById('daytimesHolder');
-              daytimesHolder.innerHTML='<p class="error-message">Нет информации по этому дню недели</p>'
+              let errorMessage=document.getElementById('error-message');
+              errorMessage.innerHTML='<p class="error-message">Нет информации по этому дню недели</p>'
+              errorMessage.style.display='block';
+              daytimesHolder.style.display='none';
             }
-            daytimesHolder.style.display='block';
-   loaderGifDay.style.display='none';
+            
+      loaderGifDay.style.display='none';
+           $('#btnNextDay').removeAttr('disabled');
+           $('#btnPrevDay').removeAttr('disabled');
+           getHoursBlocks();
         }
     });
 
+}
+
+getId('btnNextDay').onclick = function() {
+  $('#btnNextDay').attr('disabled','disabled');
+    $('#btnPrevDay').attr('disabled','disabled');
+  selectedNextDate= new Date(selectedDate);
+  selectedNextDate.setDate(selectedNextDate.getDate()+1)
+  selectedDate=selectedNextDate.getFullYear() + '-' +((selectedNextDate.getMonth()+1) <=9? ('0'+(selectedNextDate.getMonth()+1)):selectedNextDate.getMonth()+1)+'-' +((selectedNextDate.getDate()) <=9? ('0'+(selectedNextDate.getDate())):selectedNextDate.getDate());
+  openDaySubscribe(selectedDate)
+};
+getId('btnPrevDay').onclick = function() {
+  $('#btnNextDay').attr('disabled','disabled');
+    $('#btnPrevDay').attr('disabled','disabled');
+  selectedPrevDate= new Date(selectedDate);
+  selectedPrevDate.setDate(selectedPrevDate.getDate()-1)
+  selectedDate=selectedPrevDate.getFullYear() + '-' +((selectedPrevDate.getMonth()+1) <=9? ('0'+(selectedPrevDate.getMonth()+1)):selectedPrevDate.getMonth()+1)+'-' +((selectedPrevDate.getDate()) <=9? ('0'+(selectedPrevDate.getDate())):selectedPrevDate.getDate());
+  openDaySubscribe(selectedDate)
+};
+
+
+function sendSubcribeForm(){
+  console.log($('#phoneInput').val())
+  $.ajax({
+        type: "POST",
+        url: '/interval',
+        data: {
+          email:$('#emailInput').val(),
+          name:$('#nameInput').val(),
+          phone:$('#phoneInput').val(),
+         selected:$('#selectedDateInput').val()
+        },
+        success: function(resp) {
+
+            console.log(resp)
+            
+  
+        },
+        error: function(err) {
+            console.log(err)
+        }
+    });
+}
+
+function openSendForm(e){
+  $('.form').fadeIn(200);
+                $('.modal').fadeIn(200);
+                $('.modal').css({
+                    'display': 'flex'
+                });
+
+                $('.form').on('click', function() {
+                $('.form').fadeOut(200);
+                $('.modal').fadeOut(200);
+            });
+
+            $('#subscribeForm').on('submit',(e)=>{
+               e.preventDefault();
+               let isFull=false;
+               $('.tinkoffPayRow').each((index,item)=>{
+               
+                if(!item.value){
+                  isFull = false;
+                  document.getElementById('submitError').innerHTML="*Заполните форму!"
+            document.getElementById('submitError').style.display="block"
+                  return false;
+                }
+                else{
+                  isFull=true;
+                }
+                
+
+                
+               })
+               if(isFull){
+                
+                sendSubcribeForm()
+               }
+               
+            });
+            let selectedDateInput=document.getElementById('selectedDateInput');
+            selectedDateInput.value=selectedDate +' ' + e;
+}
+
+
+
+
+function getHoursBlocks(){
+  $('.normal-hour').click((e)=>{
+    openSendForm(e.target.innerText);
+  })
 }
  
 
