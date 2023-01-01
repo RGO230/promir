@@ -503,14 +503,17 @@ do {
   var chkY = chk.getFullYear();
   var chkM = chk.getMonth();
   if (chkY == this.currYear && chkM == this.currMonth && i == this.currDay) {
-    html += `<td class="today open-day-form" data-id="${chkY+'-'+(chkM+1)+'-'+i}"><p>${i}</p></td>`;
+    html += `<td class="today open-day-form" data-id="${this.currYear+'-'+ ((this.currMonth+1)<=9 ? ('0'+(this.currMonth+1)):(this.currMonth+1)) +'-'+ (i<=9? ('0'+i):i)}"><p>${i}</p></td>`;
   } 
-  else if(chkY >= this.currYear && chkM >= this.currMonth && i >= this.currDay || (chkY != this.currYear && chkM != this.currMonth)){
-    html += `<td  class="normal open-day-form" data-id="${this.currYear+'-'+ ((this.currMonth+1)<=9 ? ('0'+(this.currMonth+1)):(this.currMonth+1)) +'-'+ (i<=9? ('0'+i):i)}"><p>${i}</p></td>`;
+  else if(chkY > this.currYear || chkM > this.currMonth  ){
+    html += '<td class="not-current"><p>' + i + '</p></td>';
+   
   }
   else {
-    html += '<td class="not-current"><p>' + i + '</p></td>';
+    html += `<td  class="normal open-day-form" data-id="${this.currYear+'-'+ ((this.currMonth+1)<=9 ? ('0'+(this.currMonth+1)):(this.currMonth+1)) +'-'+ (i<=9? ('0'+i):i)}"><p>${i}</p></td>`;
+   
   }
+  console.log('chkY:'+chkY, 'this.currYear:'+this.currYear,  'chkM:'+chkM , 'this.currMonth:'+ this.currMonth, 'i:'+ i, 'this.currDay'+ this.currDay)
 
   // закрыть строку в воскресенье
   if ( dow == 0 ) {
@@ -612,6 +615,13 @@ return document.getElementById(id);
     eveningBlock=document.getElementById('evening'),
     mainDayFull=document.getElementById('mainDayFull'),
     mainDay=document.getElementById('mainDay')
+
+    mainDayFull.addEventListener('click',()=>{
+      console.log('open month')
+      document.getElementById('daysWrapper').style.display='none'
+      document.getElementById('monthWrapper').style.display='block'
+
+    })
 
    
    let DaysOfWeek = [
