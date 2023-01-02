@@ -231,6 +231,9 @@ td p, td a{
     .selected-hour{
       color: #c0c0c0;
     }
+    #subscribe-message{
+ display: none; 
+}
     </style>
 
 
@@ -329,8 +332,14 @@ td p, td a{
 <div class="form">
     </div>
 
-<div class="modal">
+    <div class="modal" id="subscribe-message">
+      <p>Заявка успешно отправлена!</p>
+    </div>
+
+<div class="modal" id="subscribe-form">
         <p>Заявка</p>
+
+
         <form class="modal-form" id="subscribeForm">
             <p>Ваше имя
             <input class="tinkoffPayRow" id="nameInput" type="text" placeholder="Введите имя" name="name">
@@ -505,7 +514,7 @@ do {
   if (chkY == this.currYear && chkM == this.currMonth && i == this.currDay) {
     html += `<td class="today open-day-form" data-id="${this.currYear+'-'+ ((this.currMonth+1)<=9 ? ('0'+(this.currMonth+1)):(this.currMonth+1)) +'-'+ (i<=9? ('0'+i):i)}"><p>${i}</p></td>`;
   } 
-  else if(chkY > this.currYear || chkM > this.currMonth  ){
+  else if(chkY > this.currYear || chkM > this.currMonth || (chkM==this.currMonth && i<this.currDay)  ){
     html += '<td class="not-current"><p>' + i + '</p></td>';
    
   }
@@ -797,16 +806,20 @@ function sendSubcribeForm(){
         success: function(resp) {
 
             console.log(resp)
+            document.getElementById('subscribe-form').style.display='none'
+            document.getElementById('subscribe-message').style.display='block'
             
   
         },
         error: function(err) {
             console.log(err)
+            alert('На сайте произошла ошибка. Попробуйте позже')
         }
     });
 }
 
 function openSendForm(e){
+
   $('.form').fadeIn(200);
                 $('.modal').fadeIn(200);
                 $('.modal').css({
@@ -817,6 +830,8 @@ function openSendForm(e){
                 $('.form').fadeOut(200);
                 $('.modal').fadeOut(200);
             });
+            document.getElementById('subscribe-form').style.display='flex'
+            document.getElementById('subscribe-message').style.display='none'
 
             $('#subscribeForm').on('submit',(e)=>{
                e.preventDefault();
